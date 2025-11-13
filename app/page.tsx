@@ -1,5 +1,4 @@
-"use client"
-
+import Image from "next/image"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 import { mockProperties } from "@/lib/mock-data"
@@ -15,20 +14,28 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="relative px-6 py-20 md:px-12 md:py-32 bg-gradient-to-br from-primary/5 via-background to-blue-50/30 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -mr-48 -mt-48"></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-100/20 rounded-full blur-3xl -ml-36 -mb-36"></div>
+      <section className="relative px-6 py-20 md:px-12 md:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/resort-style-pool-estate.jpg"
+            alt="Luxury estate with resort-style pool"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-background/80 via-background/70 to-background/40"></div>
+        </div>
 
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto relative z-10 pt-24">
           <div className="mb-16">
             <h1 className="text-6xl md:text-8xl font-bold text-foreground mb-6 leading-tight text-balance tracking-tight">
               Discover Your{" "}
-              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+              <span className="">
                 Dream Home
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-xl text-black max-w-2xl leading-relaxed">
               Explore our curated collection of luxury properties and find the perfect residence that matches your
               lifestyle and aspirations.
             </p>

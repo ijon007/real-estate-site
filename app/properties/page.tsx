@@ -47,7 +47,7 @@ export default function PropertiesPage() {
   }
 
   return (
-    <main className="min-h-screen bg-background flex flex-col">
+    <main className="min-h-screen bg-background flex flex-col pt-52">
       <Navigation />
 
       <div className="px-6 py-8 md:px-12 flex-1">

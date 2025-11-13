@@ -8,6 +8,7 @@ import { FIRM_INFO } from "@/lib/constants"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Bed, Bath, Maximize2, MapPin, Phone, Mail, ChevronLeft, Check } from "lucide-react"
+import Image from "next/image"
 
 export default function PropertyPage() {
   const params = useParams()
@@ -19,7 +20,7 @@ export default function PropertyPage() {
     return (
       <main className="min-h-screen bg-background flex flex-col">
         <Navigation />
-        <div className="max-w-6xl mx-auto px-6 py-16 md:px-12 text-center">
+        <div className="max-w-6xl mx-auto px-6 py-16 md:px-12 text-center pt-32">
           <h1 className="text-3xl font-bold text-foreground mb-4">Property Not Found</h1>
           <Link
             href="/properties"
@@ -38,7 +39,7 @@ export default function PropertyPage() {
     <main className="min-h-screen bg-background flex flex-col">
       <Navigation />
 
-      <div className="px-6 py-8 md:px-12 flex-1">
+      <div className="px-6 py-8 md:px-12 flex-1 pt-32">
         <div className="max-w-6xl mx-auto">
           {/* Back Button */}
           <Link
@@ -53,8 +54,10 @@ export default function PropertyPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-12">
             <div className="lg:col-span-2">
               <div className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden bg-muted">
-                <img
+                <Image
                   src={property.images[selectedImage] || property.image || "/placeholder.svg"}
+                  width={1000}
+                  height={1000}
                   alt={property.title}
                   className="w-full h-full object-cover"
                 />
@@ -65,12 +68,14 @@ export default function PropertyPage() {
                 <button
                   key={idx}
                   onClick={() => setSelectedImage(idx + 1)}
-                  className={`relative h-24 md:h-32 lg:h-24 rounded-2xl overflow-hidden border-2 transition-all ${
+                  className={`relative h-24 md:h-40 rounded-2xl overflow-hidden border-2 transition-all ${
                     selectedImage === idx + 1 ? "border-primary" : "border-border"
                   }`}
                 >
-                  <img
+                  <Image
                     src={image || "/placeholder.svg"}
+                    width={1000}
+                    height={1000}
                     alt={`${property.title} ${idx + 2}`}
                     className="w-full h-full object-cover"
                   />

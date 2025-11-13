@@ -4,6 +4,17 @@ import { useState } from "react"
 import Link from "next/link"
 import { Search } from "lucide-react"
 
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { Input } from "./ui/input"
+
 export default function HeroSearch() {
   const [filters, setFilters] = useState({
     type: "all",
@@ -15,75 +26,94 @@ export default function HeroSearch() {
   return (
     <div className="bg-white rounded-3xl p-8 md:p-10 border border-border/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-        {/* Property Type */}
         <div>
-          <label className="block text-sm font-semibold text-foreground mb-3">Property Type</label>
-          <select
+          <Label className="mb-3 block text-sm font-semibold text-foreground">
+            Property Type
+          </Label>
+          <Select
             value={filters.type}
-            onChange={(e) => setFilters({ ...filters, type: e.target.value })}
-            className="w-full bg-muted border border-border rounded-2xl px-4 py-3 text-foreground font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors cursor-pointer"
+            onValueChange={(value: string) => setFilters({ ...filters, type: value })}
           >
-            <option value="all">All Types</option>
-            <option value="apartment">Apartment</option>
-            <option value="house">House</option>
-            <option value="penthouse">Penthouse</option>
-            <option value="townhouse">Townhouse</option>
-          </select>
+            <SelectTrigger className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground font-medium focus:ring-1 focus:ring-primary focus:ring-offset-0 w-full">
+              <SelectValue placeholder="Select property type" />
+            </SelectTrigger>
+            <SelectContent className="rounded-2xl border-border">
+              <SelectItem value="all">All Types</SelectItem>
+              <SelectItem value="apartment">Apartment</SelectItem>
+              <SelectItem value="house">House</SelectItem>
+              <SelectItem value="penthouse">Penthouse</SelectItem>
+              <SelectItem value="townhouse">Townhouse</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
-        {/* Location */}
         <div>
-          <label className="block text-sm font-semibold text-foreground mb-3">Location</label>
-          <input
+          <Label className="mb-3 block text-sm font-semibold text-foreground">
+            Location
+          </Label>
+          <Input
             type="text"
             placeholder="Enter location"
             value={filters.location}
             onChange={(e) => setFilters({ ...filters, location: e.target.value })}
-            className="w-full bg-muted border border-border rounded-2xl px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+            className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-primary focus-visible:ring-offset-0 w-full"
           />
         </div>
 
-        {/* Price Range */}
         <div>
-          <label className="block text-sm font-semibold text-foreground mb-3">Price Range</label>
-          <select
+          <Label className="mb-3 block text-sm font-semibold text-foreground">
+            Price Range
+          </Label>
+          <Select
             value={filters.price}
-            onChange={(e) => setFilters({ ...filters, price: e.target.value })}
-            className="w-full bg-muted border border-border rounded-2xl px-4 py-3 text-foreground font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors cursor-pointer"
+            onValueChange={(value: string) => setFilters({ ...filters, price: value })}
           >
-            <option value="all">Any Price</option>
-            <option value="500k">Under $500K</option>
-            <option value="500k-1m">$500K - $1M</option>
-            <option value="1m-2m">$1M - $2M</option>
-            <option value="2m">$2M+</option>
-          </select>
+            <SelectTrigger className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground font-medium focus:ring-1 focus:ring-primary focus:ring-offset-0 w-full">
+              <SelectValue placeholder="Select price range" />
+            </SelectTrigger>
+            <SelectContent className="rounded-2xl border-border">
+              <SelectItem value="all">Any Price</SelectItem>
+              <SelectItem value="500k">Under $500K</SelectItem>
+              <SelectItem value="500k-1m">$500K - $1M</SelectItem>
+              <SelectItem value="1m-2m">$1M - $2M</SelectItem>
+              <SelectItem value="2m">$2M+</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
-        {/* Bedrooms */}
         <div>
-          <label className="block text-sm font-semibold text-foreground mb-3">Bedrooms</label>
-          <select
+          <Label className="mb-3 block text-sm font-semibold text-foreground">
+            Bedrooms
+          </Label>
+          <Select
             value={filters.bedrooms}
-            onChange={(e) => setFilters({ ...filters, bedrooms: e.target.value })}
-            className="w-full bg-muted border border-border rounded-2xl px-4 py-3 text-foreground font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors cursor-pointer"
+            onValueChange={(value) =>
+              setFilters({ ...filters, bedrooms: value })
+            }
           >
-            <option value="all">Any Size</option>
-            <option value="1">1 Bedroom</option>
-            <option value="2">2 Bedrooms</option>
-            <option value="3">3 Bedrooms</option>
-            <option value="4">4+ Bedrooms</option>
-          </select>
+            <SelectTrigger className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground font-medium focus:ring-1 focus:ring-primary focus:ring-offset-0 w-full">
+              <SelectValue placeholder="Select bedrooms" />
+            </SelectTrigger>
+            <SelectContent className="rounded-2xl border-border">
+              <SelectItem value="all">Any Size</SelectItem>
+              <SelectItem value="1">1 Bedroom</SelectItem>
+              <SelectItem value="2">2 Bedrooms</SelectItem>
+              <SelectItem value="3">3 Bedrooms</SelectItem>
+              <SelectItem value="4">4+ Bedrooms</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
-        {/* Search Button */}
         <div className="flex items-end">
-          <Link
-            href="/properties"
-            className="w-full bg-primary text-primary-foreground rounded-2xl py-3 font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
+          <Button
+            asChild
+            className="w-full rounded-2xl py-3 text-base font-bold hover:bg-primary/90"
           >
-            <Search className="w-5 h-5" />
-            Search
-          </Link>
+            <Link href="/properties" className="flex items-center justify-center gap-2">
+              <Search className="h-5 w-5" />
+              Search
+            </Link>
+          </Button>
         </div>
       </div>
     </div>

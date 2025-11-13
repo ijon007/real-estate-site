@@ -42,7 +42,7 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: "Visit Us",
-      description: `Stop by our office at ${FIRM_INFO.address}`,
+      description: `${FIRM_INFO.address}`,
       buttonText: "Get Directions",
       href: "#",
       bgColor: "bg-background",
@@ -61,7 +61,7 @@ export default function ContactPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-background flex flex-col">
+    <main className="min-h-screen bg-background flex flex-col pt-24">
       <Navigation />
 
       {/* Hero Section */}
@@ -81,7 +81,7 @@ export default function ContactPage() {
               return (
                 <div
                   key={idx}
-                  className={`rounded-[2rem] p-8 md:p-10 border-2 transition-all duration-300 hover:shadow-lg ${card.bgColor} ${card.borderColor}`}
+                  className={`rounded-4xl p-8 md:p-10 border-2 transition-all duration-300 hover:shadow-lg ${card.bgColor} ${card.borderColor}`}
                 >
                   <div
                     className={`inline-block p-4 rounded-full mb-6 ${card.isDark ? "bg-primary-foreground/20" : "bg-primary/10"}`}
@@ -117,112 +117,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* Contact Form & CTA Buttons */}
-      <section className="px-6 py-20 md:px-12 flex-1 max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Form */}
-          <div>
-            <h2 className="text-3xl font-bold text-foreground mb-8">Send us a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-card text-foreground border border-border rounded-2xl px-6 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-card text-foreground border border-border rounded-2xl px-6 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-foreground mb-2">
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full bg-card text-foreground border border-border rounded-2xl px-6 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-                  placeholder="Your phone number"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full bg-card text-foreground border border-border rounded-2xl px-6 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"
-                  placeholder="Tell us about your interests..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-primary text-primary-foreground py-4 rounded-2xl font-bold text-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
-              >
-                <Send className="w-5 h-5" />
-                Send Message
-              </button>
-
-              {submitted && (
-                <div className="bg-green-100 border border-green-300 text-green-800 rounded-2xl p-4 text-center font-semibold">
-                  Message sent successfully! We'll be in touch soon.
-                </div>
-              )}
-            </form>
-          </div>
-
-          {/* CTA Section */}
-          <div className="space-y-8">
-            {/* Properties CTA */}
-            <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-12 text-center border border-primary/20">
-              <h3 className="text-2xl font-bold text-foreground mb-4">Browse Properties</h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                Ready to start your search? Explore our full collection of luxury properties.
-              </p>
-              <Link
-                href="/properties"
-                className="inline-block w-full bg-primary text-primary-foreground py-4 rounded-2xl font-bold text-lg hover:bg-primary/90 transition-colors"
-              >
-                View All Properties
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </main>
   )
