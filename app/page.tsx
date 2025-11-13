@@ -11,6 +11,7 @@ import Footer from "@/components/footer"
 import WhyChooseUs from "@/components/why-choose-us"
 import CTASection from "@/components/cta-section"
 import { useI18n } from "@/components/i18n-provider"
+import { Button } from "@/components/ui/button"
 
 export default function Home() {
   const { t } = useI18n()
@@ -46,8 +47,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Properties */}
-      <section className="px-6 py-20 md:px-12 max-w-6xl mx-auto">
+      <section className="flex flex-col items-center justify-center gap-10 px-6 py-20 md:px-12 max-w-6xl mx-auto">
         <div className="mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-3">{t("home.featured.title")}</h2>
           <p className="text-lg text-muted-foreground">{t("home.featured.description")}</p>
@@ -59,26 +59,23 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <Link
-            href="/properties"
-            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition-colors"
-          >
+        <Button
+          asChild
+          className="group flex items-center justify-center w-60 rounded-full py-6 px-10 bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-200"
+        >
+          <Link href="/properties">
             {t("common.buttons.viewAll")}
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
           </Link>
-        </div>
+        </Button>
       </section>
 
-      {/* Why Choose Luxury Realty */}
       <WhyChooseUs />
 
-      {/* CTA Section */}
       <section className="px-6 py-20 md:px-12 max-w-6xl mx-auto">
         <CTASection />
       </section>
 
-      {/* Footer */}
       <Footer />
     </main>
   )

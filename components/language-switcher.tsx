@@ -1,51 +1,76 @@
-"use client"
+"use client";
 
-import { useI18n } from "./i18n-provider"
+import { Button } from "@/components/ui/button";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Image from "next/image";
+import { useI18n } from "@/components/i18n-provider";
 
-const languageNames: Record<string, string> = {
-  en: "English",
-  sq: "Shqip",
-}
+const languages = [
+  {
+    code: "en" as const,
+    name: "EN",
+    flag: "https://flagcdn.com/w20/gb.webp",
+  },
+  {
+    code: "sq" as const,
+    name: "SQ",
+    flag: "https://flagcdn.com/w20/al.webp",
+  },
+];
 
 export default function LanguageSwitcher() {
-  const { language, setLanguage, supportedLanguages } = useI18n()
+  const { language, setLanguage } = useI18n();
+
+  const currentLang = languages.find((lang) => lang.code === language);
 
   return (
-    <Select value={language} onValueChange={(value) => setLanguage(value as typeof language)}>
-      <SelectTrigger className="w-[140px] rounded-xl border-border bg-muted text-foreground font-medium focus:ring-1 focus:ring-primary focus:ring-offset-0">
-        <SelectValue>
-          <span className="flex items-center gap-2">
-            <span className="text-lg">{getLanguageFlag(language)}</span>
-            {languageNames[language]}
-          </span>
-        </SelectValue>
-      </SelectTrigger>
-      <SelectContent className="rounded-xl border-border">
-        {supportedLanguages.map((lang) => (
-          <SelectItem key={lang} value={lang}>
-            <span className="flex items-center gap-2">
-              <span className="text-lg">{getLanguageFlag(lang)}</span>
-              {languageNames[lang]}
-            </span>
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
-  )
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          className="flex items-center gap-2 border-border bg-transparent text-black hover:bg-transparent hover:text-black"
+          size="sm"
+          variant="outline"
+        >
+          <Image
+            alt={`${currentLang?.name} flag`}
+            className="rounded-xs"
+            height="15"
+            src={currentLang?.flag || ""}
+            width="20"
+          />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="min-w-[120px] bg-background text-black border-border">
+        <DropdownMenuRadioGroup
+          onValueChange={(value) => {
+            setLanguage(value as "en" | "sq");
+          }}
+          value={language}
+        >
+          {languages.map((lang) => (
+            <DropdownMenuRadioItem
+              className="flex items-center gap-2 cursor-pointer text-black data-highlighted:bg-white/90 data-highlighted:text-black"
+              key={lang.code}
+              value={lang.code}
+            >
+              <Image
+                alt={`${lang.name} flag`}
+                className="rounded-xs"
+                height="15"
+                src={lang.flag}
+                width="20"
+              />
+              <span>{lang.name}</span>
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 }
-
-function getLanguageFlag(lang: string): string {
-  const flags: Record<string, string> = {
-    en: "🇺🇸",
-    sq: "🇦🇱",
-  }
-  return flags[lang] || "🌐"
-}
-

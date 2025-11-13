@@ -109,7 +109,7 @@ export default function HeroSearch() {
         <div className="flex items-end">
           <Button
             asChild
-            className="w-full rounded-2xl py-3 hover:bg-primary/90"
+            className="flex items-center justify-start w-full rounded-2xl py-3 hover:bg-primary/90"
           >
             <Link href="/properties" className="flex items-center justify-center gap-2">
               <Search className="h-5 w-5" />

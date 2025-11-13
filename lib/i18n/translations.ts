@@ -5,13 +5,14 @@ export const translations: Record<Language, Translations> = {
     common: {
       nav: {
         properties: "Properties",
-        contact: "Contact",
+        about: "About",
         contactUs: "Contact Us",
       },
       footer: {
         quickLinks: "Quick Links",
-        contact: "Contact",
+        about: "About",
         home: "Home",
+        contact: "Contact",
         properties: "Properties",
       },
       buttons: {
@@ -155,18 +156,38 @@ export const translations: Record<Language, Translations> = {
         support: "After-Sales Support",
       },
     },
+    about: {
+      title: "About Us",
+      subtitle: "Your trusted partner in luxury real estate",
+      company: {
+        title: "Our Story",
+        description:
+          "With over two decades of experience in the luxury real estate market, Luxury Realty has established itself as a premier destination for discerning clients seeking exceptional properties. We combine unparalleled market knowledge with personalized service to deliver results that exceed expectations.",
+        mission: "Our Mission",
+        missionDescription:
+          "To transform the real estate experience by providing exceptional service, deep market insights, and unwavering commitment to our clients' success. We believe that finding or selling a home should be an exciting journey, not a stressful transaction.",
+        values: "Our Values",
+        valuesDescription:
+          "Integrity, excellence, and client-first approach guide everything we do. We build lasting relationships based on trust, transparency, and a genuine passion for helping our clients achieve their real estate goals.",
+      },
+      team: {
+        title: "Meet Our Team",
+        subtitle: "Experienced professionals dedicated to your success",
+      },
+    },
   },
   sq: {
     common: {
       nav: {
         properties: "Pronat",
-        contact: "Kontakt",
+        about: "Rreth Nesh",
         contactUs: "Na Kontaktoni",
       },
       footer: {
         quickLinks: "Lidhje të Shpejta",
-        contact: "Kontakt",
+        about: "Rreth Nesh",
         home: "Shtëpia",
+        contact: "Na Kontaktoni",
         properties: "Pronat",
       },
       buttons: {
@@ -308,6 +329,25 @@ export const translations: Record<Language, Translations> = {
         seamless: "Proces pa Probleme",
         insights: "Njohuri të Forta të Tregut",
         support: "Mbështetje Pas Shitjes",
+      },
+    },
+    about: {
+      title: "Rreth Nesh",
+      subtitle: "Partneri juaj i besueshëm në pasuri të paluajtshme luksoze",
+      company: {
+        title: "Historia Jonë",
+        description:
+          "Me mbi dy dekada përvojë në tregun e pasurive të paluajtshme luksoze, Luxury Realty është vendosur si destinacion kryesor për klientët e zgjedhur që kërkojnë pronë të jashtëzakonshme. Ne kombinojmë njohuri të paparë të tregut me shërbim të personalizuar për të ofruar rezultate që tejkalojnë pritjet.",
+        mission: "Misioni Jonë",
+        missionDescription:
+          "Të transformojmë përvojën e pasurive të paluajtshme duke ofruar shërbim të jashtëzakonshëm, njohuri të thella të tregut dhe angazhim të patundur për suksesin e klientëve tanë. Ne besojmë se gjetja ose shitja e një shtëpie duhet të jetë një udhëtim emocionues, jo një transaksion stresues.",
+        values: "Vlerat Tona",
+        valuesDescription:
+          "Integriteti, ekselenca dhe qasja e fokusuar te klienti udhëheqin gjithçka që bëjmë. Ne ndërtojmë marrëdhënie të qëndrueshme të bazuara në besim, transparencë dhe pasion të vërtetë për të ndihmuar klientët tanë të arrijnë objektivat e tyre të pasurive të paluajtshme.",
+      },
+      team: {
+        title: "Njihuni me Ekipin Tonë",
+        subtitle: "Profesionistë me përvojë të dedikuar për suksesin tuaj",
       },
     },
   },

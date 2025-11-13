@@ -4,13 +4,14 @@ export interface Translations {
   common: {
     nav: {
       properties: string
-      contact: string
+      about: string
       contactUs: string
     }
     footer: {
       quickLinks: string
-      contact: string
+      about: string
       home: string
+      contact: string
       properties: string
     }
     buttons: {
@@ -146,6 +147,22 @@ export interface Translations {
       seamless: string
       insights: string
       support: string
+    }
+  }
+  about: {
+    title: string
+    subtitle: string
+    company: {
+      title: string
+      description: string
+      mission: string
+      missionDescription: string
+      values: string
+      valuesDescription: string
+    }
+    team: {
+      title: string
+      subtitle: string
     }
   }
 }

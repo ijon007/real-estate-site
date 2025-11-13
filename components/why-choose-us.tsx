@@ -1,6 +1,7 @@
 "use client"
 
 import { useI18n } from "./i18n-provider"
+import { Button } from "./ui/button"
 
 export default function WhyChooseUs() {
   const { t } = useI18n()
@@ -120,7 +121,7 @@ export default function WhyChooseUs() {
             <div className="space-y-8 my-12">
               {benefits.map((benefit) => (
                 <div key={benefit.number} className="flex gap-6">
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <span className="text-4xl font-bold text-primary">{benefit.number}</span>
                   </div>
                   <div>
@@ -131,9 +132,9 @@ export default function WhyChooseUs() {
               ))}
             </div>
 
-            <button className="px-8 py-3 bg-foreground text-background rounded-full font-semibold text-lg hover:bg-foreground/90 transition-colors">
+            <Button className="px-10 py-6 bg-foreground text-background rounded-full hover:bg-foreground/90 transition-colors">
               {t("common.buttons.moreAboutUs")}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
