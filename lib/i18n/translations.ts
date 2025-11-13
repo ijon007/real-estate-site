@@ -232,7 +232,7 @@ export const translations: Record<Language, Translations> = {
         bathrooms: "Banjo",
       },
       sorting: {
-        featured: "Të Veçanta",
+        featured: "Filtrimi",
         priceLow: "Çmimi: Nga Më i Ulët te Më i Lartë",
         priceHigh: "Çmimi: Nga Më i Lartë te Më i Ulët",
       },

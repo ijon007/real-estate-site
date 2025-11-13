@@ -5,8 +5,14 @@ import { mockProperties } from "@/lib/mock-data"
 import PropertyCard from "@/components/property-card"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
-import { ChevronDown } from "lucide-react"
 import { useI18n } from "@/components/i18n-provider"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 export default function PropertiesPage() {
   const { t } = useI18n()
@@ -67,7 +73,7 @@ export default function PropertiesPage() {
                   <h3 className="text-xl font-bold text-foreground">{t("properties.filters.title")}</h3>
                   <button
                     onClick={resetFilters}
-                    className="text-sm text-primary hover:text-primary/80 font-semibold transition-colors"
+                    className="text-sm text-primary hover:text-primary/80 font-semibold transition-colors cursor-pointer"
                   >
                     {t("properties.filters.reset")}
                   </button>
@@ -100,7 +106,7 @@ export default function PropertiesPage() {
                       <button
                         key={bed}
                         onClick={() => setBeds(beds === bed ? null : bed)}
-                        className={`py-2 px-3 rounded-xl font-semibold transition-colors text-sm ${
+                        className={`py-2 px-3 rounded-xl font-semibold transition-colors text-sm cursor-pointer ${
                           beds === bed
                             ? "bg-primary text-primary-foreground"
                             : "bg-muted text-foreground hover:bg-border"
@@ -120,7 +126,7 @@ export default function PropertiesPage() {
                       <button
                         key={bath}
                         onClick={() => setBaths(baths === bath ? null : bath)}
-                        className={`py-2 px-3 rounded-xl font-semibold transition-colors text-sm ${
+                        className={`py-2 px-3 rounded-xl font-semibold transition-colors text-sm cursor-pointer ${
                           baths === bath
                             ? "bg-primary text-primary-foreground"
                             : "bg-muted text-foreground hover:bg-border"
@@ -136,20 +142,18 @@ export default function PropertiesPage() {
 
             {/* Properties Grid */}
             <div className="lg:col-span-3">
-              <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center justify-between mb-5">
                 <p className="text-muted-foreground font-medium">{t("properties.results.found", { count: filteredProperties.length })}</p>
-                <div className="relative">
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                    className="appearance-none bg-card text-foreground px-4 py-2 pr-10 rounded-xl border border-border font-medium cursor-pointer hover:border-primary/50 transition-colors"
-                  >
-                    <option value="featured">{t("properties.sorting.featured")}</option>
-                    <option value="price-low">{t("properties.sorting.priceLow")}</option>
-                    <option value="price-high">{t("properties.sorting.priceHigh")}</option>
-                  </select>
-                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
-                </div>
+                <Select value={sortBy} onValueChange={setSortBy}>
+                  <SelectTrigger className="rounded-full border-border bg-muted px-6 py-3 text-foreground font-medium focus:ring-1 focus:ring-primary focus:ring-offset-0">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent align="end" className="rounded-2xl border-border">
+                    <SelectItem value="featured">{t("properties.sorting.featured")}</SelectItem>
+                    <SelectItem value="price-low">{t("properties.sorting.priceLow")}</SelectItem>
+                    <SelectItem value="price-high">{t("properties.sorting.priceHigh")}</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               {filteredProperties.length > 0 ? (
