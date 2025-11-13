@@ -2,34 +2,19 @@
 
 import type React from "react"
 import Footer from "@/components/footer"
-import { useState } from "react"
-import Link from "next/link"
 import Navigation from "@/components/navigation"
 import { FIRM_INFO } from "@/lib/constants"
-import { Phone, Mail, MapPin, Send } from "lucide-react"
+import { Phone, Mail } from "lucide-react"
 import { useI18n } from "@/components/i18n-provider"
+import CalAIWidget from "@/components/calai"
+import { Button } from "@/components/ui/button"
 
 export default function ContactPage() {
   const { t } = useI18n()
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  })
-  const [submitted, setSubmitted] = useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitted(true)
-    setFormData({ name: "", email: "", phone: "", message: "" })
-    setTimeout(() => setSubmitted(false), 3000)
-  }
+  // Encode address for Google Maps embed
+  const encodedAddress = encodeURIComponent(FIRM_INFO.address)
+  const mapEmbedUrl = `https://www.google.com/maps?q=${encodedAddress}&output=embed`
 
   const contactCards = [
     {
@@ -40,15 +25,7 @@ export default function ContactPage() {
       href: `mailto:${FIRM_INFO.email}`,
       bgColor: "bg-blue-50",
       borderColor: "border-blue-100",
-    },
-    {
-      icon: MapPin,
-      title: t("contact.cards.visitUs.title"),
-      description: `${FIRM_INFO.address}`,
-      buttonText: t("contact.cards.visitUs.button"),
-      href: "#",
-      bgColor: "bg-background",
-      borderColor: "border-border",
+      isEmail: true,
     },
     {
       icon: Phone,
@@ -59,6 +36,7 @@ export default function ContactPage() {
       bgColor: "bg-primary",
       borderColor: "border-primary",
       isDark: true,
+      isBooking: true,
     },
   ]
 
@@ -66,7 +44,6 @@ export default function ContactPage() {
     <main className="min-h-screen bg-background flex flex-col pt-24">
       <Navigation />
 
-      {/* Hero Section */}
       <section className="px-6 py-20 md:px-12 md:py-32 text-center">
         <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">{t("contact.title")}</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -74,16 +51,28 @@ export default function ContactPage() {
         </p>
       </section>
 
-      {/* Contact Cards */}
       <section className="px-6 md:px-12 pb-20 flex-1">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="mb-12 rounded-2xl overflow-hidden shadow-lg">
+            <iframe
+              width="100%"
+              height="500"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              src={mapEmbedUrl}
+              className="w-full"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {contactCards.map((card, idx) => {
               const Icon = card.icon
               return (
                 <div
                   key={idx}
-                  className={`rounded-4xl p-8 md:p-10 border-2 transition-all duration-300 hover:shadow-lg ${card.bgColor} ${card.borderColor}`}
+                  className={`rounded-4xl p-8 md:p-10 border-2 transition-all duration-300 ${card.bgColor} ${card.borderColor}`}
                 >
                   <div
                     className={`inline-block p-4 rounded-full mb-6 ${card.isDark ? "bg-primary-foreground/20" : "bg-primary/10"}`}
@@ -103,16 +92,16 @@ export default function ContactPage() {
                     {card.description}
                   </p>
 
-                  <a
-                    href={card.href}
-                    className={`inline-block w-full py-3 px-6 rounded-full font-semibold text-center transition-colors duration-200 ${
-                      card.isDark
-                        ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-                        : "bg-primary text-primary-foreground hover:bg-primary/90"
-                    }`}
-                  >
-                    {card.buttonText}
-                  </a>
+                  {card.isBooking ? (
+                    <CalAIWidget />
+                  ) : card.isEmail ? (
+                    <Button
+                      asChild
+                      className="w-full py-5 px-6 rounded-full text-center transition-colors duration-200"
+                    >
+                      <a href={card.href}>{card.buttonText}</a>
+                    </Button>
+                  ) : null}
                 </div>
               )
             })}
