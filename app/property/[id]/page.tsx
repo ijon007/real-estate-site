@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { useParams } from "next/navigation"
 import Link from "next/link"
 import { mockProperties } from "@/lib/mock-data"
@@ -10,13 +9,24 @@ import Footer from "@/components/footer"
 import { Bed, Bath, Maximize2, MapPin, Phone, Mail, ChevronLeft, Check } from "lucide-react"
 import Image from "next/image"
 import { useI18n } from "@/components/i18n-provider"
+import CalAIWidget from "@/components/calai"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import { Button } from "@/components/ui/button"
 
 export default function PropertyPage() {
   const { t } = useI18n()
   const params = useParams()
   const propertyId = params.id as string
   const property = mockProperties.find((p) => p.id === propertyId)
-  const [selectedImage, setSelectedImage] = useState(0)
+  
+  // Combine main image with additional images for carousel
+  const allImages = property ? [property.image, ...property.images] : []
 
   if (!property) {
     return (
@@ -52,46 +62,37 @@ export default function PropertyPage() {
             {t("property.backToProperties")}
           </Link>
 
-          {/* Image Gallery */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-12">
-            <div className="lg:col-span-2">
-              <div className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden bg-muted">
-                <Image
-                  src={property.images[selectedImage] || property.image || "/placeholder.svg"}
-                  width={1000}
-                  height={1000}
-                  alt={property.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4 lg:grid-cols-1">
-              {property.images.slice(1, 5).map((image, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedImage(idx + 1)}
-                  className={`relative h-24 md:h-40 rounded-2xl overflow-hidden border-2 transition-all ${
-                    selectedImage === idx + 1 ? "border-primary" : "border-border"
-                  }`}
-                >
-                  <Image
-                    src={image || "/placeholder.svg"}
-                    width={1000}
-                    height={1000}
-                    alt={`${property.title} ${idx + 2}`}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Property Info */}
+          {/* Two Column Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            <div className="lg:col-span-2">
-              {/* Price & Title */}
-              <div className="mb-8">
-                <div className="text-5xl font-bold text-primary mb-3">${(property.price / 1000000).toFixed(2)}M</div>
+            {/* Left Column - Property Info */}
+            <div className="lg:col-span-2 space-y-8">
+              {/* Image Gallery */}
+              <div className="relative">
+                <Carousel className="w-full">
+                  <CarouselContent>
+                    {allImages.map((image, idx) => (
+                      <CarouselItem key={idx}>
+                        <div className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden bg-muted">
+                          <Image
+                            src={image || "/placeholder.svg"}
+                            width={1000}
+                            height={1000}
+                            alt={`${property.title} - Image ${idx + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <div className="absolute bottom-4 right-4 flex gap-2 z-10">
+                    <CarouselPrevious className="relative left-0 top-0 translate-x-0 translate-y-0 bg-background/90 backdrop-blur-sm hover:bg-background border-2 shadow-lg" />
+                    <CarouselNext className="relative right-0 top-0 translate-x-0 translate-y-0 bg-background/90 backdrop-blur-sm hover:bg-background border-2 shadow-lg" />
+                  </div>
+                </Carousel>
+              </div>
+
+              {/* Title */}
+              <div>
                 <h1 className="text-4xl font-bold text-foreground mb-3">{property.title}</h1>
                 <div className="flex items-center gap-2 text-lg text-muted-foreground">
                   <MapPin className="w-5 h-5 text-primary" />
@@ -100,7 +101,7 @@ export default function PropertyPage() {
               </div>
 
               {/* Key Stats */}
-              <div className="grid grid-cols-3 gap-4 mb-12 pb-12 border-b border-border">
+              <div className="grid grid-cols-3 gap-4 pb-8 border-b border-border">
                 <div className="bg-secondary/20 rounded-2xl p-6">
                   <div className="flex items-center gap-3 mb-2">
                     <Bed className="w-6 h-6 text-primary" />
@@ -125,13 +126,13 @@ export default function PropertyPage() {
               </div>
 
               {/* Description */}
-              <div className="mb-12">
+              <div>
                 <h2 className="text-2xl font-bold text-foreground mb-4">{t("property.about")}</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-8">{property.description}</p>
+                <p className="text-lg text-muted-foreground leading-relaxed">{property.description}</p>
               </div>
 
               {/* Features */}
-              <div className="mb-12">
+              <div>
                 <h2 className="text-2xl font-bold text-foreground mb-6">{t("property.features")}</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {property.features.map((feature, idx) => (
@@ -142,11 +143,47 @@ export default function PropertyPage() {
                   ))}
                 </div>
               </div>
+
+              {/* Location */}
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-6">{t("property.location")}</h2>
+                <div className="rounded-3xl overflow-hidden border border-border bg-muted">
+                  <iframe
+                    width="100%"
+                    height="450"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(property.location)}&output=embed`}
+                    className="w-full"
+                  />
+                </div>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="mt-4 rounded-full py-5"
+                >
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(property.location)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  > 
+                    {t("property.getDirections")} <MapPin className="w-4 h-4" />
+                  </a>
+                </Button>
+              </div>
             </div>
 
-            {/* Contact Card */}
+            {/* Right Column - Contact Card */}
             <div className="lg:col-span-1">
               <div className="bg-card rounded-3xl p-8 border border-border sticky top-24">
+                {/* Price - Main Element */}
+                <div className="mb-8 pb-8 border-b border-border">
+                  <div className="text-5xl font-bold text-primary mb-2">${(property.price / 1000000).toFixed(2)}M</div>
+                  <p className="text-sm text-muted-foreground">Asking Price</p>
+                </div>
+
                 <h3 className="text-2xl font-bold text-foreground mb-6">{t("property.getInTouch")}</h3>
 
                 <div className="space-y-6 mb-8">
@@ -177,15 +214,7 @@ export default function PropertyPage() {
                   </a>
                 </div>
 
-                <button className="w-full bg-primary text-primary-foreground py-3 rounded-2xl font-bold hover:bg-primary/90 transition-colors mb-3">
-                  {t("common.buttons.scheduleViewing")}
-                </button>
-                <Link
-                  href="/contact"
-                  className="block text-center w-full bg-secondary/20 text-foreground py-3 rounded-2xl font-bold hover:bg-secondary/30 transition-colors"
-                >
-                  {t("common.buttons.learnMore")}
-                </Link>
+                <CalAIWidget property={true} />
               </div>
             </div>
           </div>

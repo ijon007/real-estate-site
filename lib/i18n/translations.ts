@@ -77,6 +77,8 @@ export const translations: Record<Language, Translations> = {
       bedrooms: "Bedrooms",
       bathrooms: "Bathrooms",
       sqft: "Sq. Ft.",
+      location: "Location",
+      getDirections: "Get Directions",
     },
     contact: {
       title: "Get in Touch",
@@ -252,6 +254,8 @@ export const translations: Record<Language, Translations> = {
       bedrooms: "Dhoma Gjumi",
       bathrooms: "Banjo",
       sqft: "Metra Katrorë",
+      location: "Vendndodhja",
+      getDirections: "Merr Udhëzime",
     },
     contact: {
       title: "Lidhuni me Ne",
