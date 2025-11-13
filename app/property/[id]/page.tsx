@@ -6,7 +6,34 @@ import { mockProperties } from "@/lib/mock-data"
 import { FIRM_INFO } from "@/lib/constants"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
-import { Bed, Bath, Maximize2, MapPin, Phone, Mail, ChevronLeft, Check } from "lucide-react"
+import {
+  Bed,
+  Bath,
+  Maximize2,
+  MapPin,
+  Phone,
+  Mail,
+  ChevronLeft,
+  Check,
+  Waves,
+  Home,
+  Droplets,
+  Wifi,
+  Car,
+  Dumbbell,
+  TreePine,
+  Shield,
+  Wine,
+  Sun,
+  Zap,
+  Camera,
+  HardDrive,
+  Building2,
+  UtensilsCrossed,
+  Sparkles,
+  Lock,
+  Layers,
+} from "lucide-react"
 import Image from "next/image"
 import { useI18n } from "@/components/i18n-provider"
 import CalAIWidget from "@/components/calai"
@@ -18,6 +45,90 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Button } from "@/components/ui/button"
+
+// Map features to icons
+const getFeatureIcon = (feature: string) => {
+  const lowerFeature = feature.toLowerCase()
+  if (lowerFeature.includes("ocean") || lowerFeature.includes("view") || lowerFeature.includes("water")) {
+    return Waves
+  }
+  if (lowerFeature.includes("terrace") || lowerFeature.includes("roof") || lowerFeature.includes("patio")) {
+    return Sun
+  }
+  if (lowerFeature.includes("pool")) {
+    return Droplets
+  }
+  if (lowerFeature.includes("smart") || lowerFeature.includes("home")) {
+    return Home
+  }
+  if (lowerFeature.includes("parking") || lowerFeature.includes("garage")) {
+    return Car
+  }
+  if (lowerFeature.includes("gym") || lowerFeature.includes("fitness")) {
+    return Dumbbell
+  }
+  if (lowerFeature.includes("garden") || lowerFeature.includes("gardens")) {
+    return TreePine
+  }
+  if (lowerFeature.includes("security") || lowerFeature.includes("cam")) {
+    return Shield
+  }
+  if (lowerFeature.includes("wine")) {
+    return Wine
+  }
+  if (lowerFeature.includes("tennis") || lowerFeature.includes("court")) {
+    return Sparkles
+  }
+  if (lowerFeature.includes("internet") || lowerFeature.includes("fiber") || lowerFeature.includes("wifi")) {
+    return Wifi
+  }
+  if (lowerFeature.includes("solar") || lowerFeature.includes("panels")) {
+    return Sun
+  }
+  if (lowerFeature.includes("ev") || lowerFeature.includes("charging")) {
+    return Zap
+  }
+  if (lowerFeature.includes("office") || lowerFeature.includes("space")) {
+    return Building2
+  }
+  if (lowerFeature.includes("kitchen")) {
+    return UtensilsCrossed
+  }
+  if (lowerFeature.includes("hardwood") || lowerFeature.includes("floors")) {
+    return Layers
+  }
+  if (lowerFeature.includes("basement") || lowerFeature.includes("storage")) {
+    return HardDrive
+  }
+  if (lowerFeature.includes("brick") || lowerFeature.includes("exposed")) {
+    return Building2
+  }
+  if (lowerFeature.includes("pet") || lowerFeature.includes("friendly")) {
+    return Sparkles
+  }
+  if (lowerFeature.includes("open") || lowerFeature.includes("concept")) {
+    return Maximize2
+  }
+  if (lowerFeature.includes("urban") || lowerFeature.includes("location")) {
+    return MapPin
+  }
+  if (lowerFeature.includes("guest") || lowerFeature.includes("house")) {
+    return Home
+  }
+  if (lowerFeature.includes("shower") || lowerFeature.includes("outdoor")) {
+    return Droplets
+  }
+  if (lowerFeature.includes("beach") || lowerFeature.includes("access")) {
+    return Waves
+  }
+  if (lowerFeature.includes("updated") || lowerFeature.includes("systems")) {
+    return Zap
+  }
+  if (lowerFeature.includes("period") || lowerFeature.includes("details")) {
+    return Sparkles
+  }
+  return Check
+}
 
 export default function PropertyPage() {
   const { t } = useI18n()
@@ -135,12 +246,22 @@ export default function PropertyPage() {
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-6">{t("property.features")}</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {property.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-3 bg-secondary/10 rounded-2xl p-4">
-                      <Check className="w-5 h-5 text-primary shrink-0" />
-                      <span className="text-foreground font-medium">{feature}</span>
-                    </div>
-                  ))}
+                  {property.features.map((feature, idx) => {
+                    const IconComponent = getFeatureIcon(feature)
+                    return (
+                      <div
+                        key={idx}
+                        className="group relative flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-secondary/20 to-secondary/5 rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
+                      >
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                          <IconComponent className="w-6 h-6 text-primary" />
+                        </div>
+                        <span className="text-foreground font-semibold text-sm text-center leading-tight">
+                          {feature}
+                        </span>
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
 
