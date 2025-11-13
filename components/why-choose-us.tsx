@@ -1,33 +1,34 @@
 "use client"
 
+import { useI18n } from "./i18n-provider"
+
 export default function WhyChooseUs() {
+  const { t } = useI18n()
+
   const benefits = [
     {
       number: "01",
-      title: "Buy a new home",
-      description:
-        "Discover your dream home effortlessly. Explore diverse properties and expert guidance for a seamless buying experience.",
+      title: t("whyChooseUs.benefit1.title"),
+      description: t("whyChooseUs.benefit1.description"),
     },
     {
       number: "02",
-      title: "Rent a home",
-      description:
-        "Discover your perfect rental effortlessly. Explore a diverse variety of listings tailored precisely to suit your unique lifestyle needs.",
+      title: t("whyChooseUs.benefit2.title"),
+      description: t("whyChooseUs.benefit2.description"),
     },
     {
       number: "03",
-      title: "Sell a home",
-      description:
-        "Sell confidently with expert guidance and effective strategies, showcasing your property's best features for a successful sale.",
+      title: t("whyChooseUs.benefit3.title"),
+      description: t("whyChooseUs.benefit3.description"),
     },
   ]
 
   const features = [
-    "Trusted Expertise",
-    "Tailored to You",
-    "Seamless Process",
-    "Strong Market Insights",
-    "After-Sales Support",
+    t("whyChooseUs.features.trusted"),
+    t("whyChooseUs.features.tailored"),
+    t("whyChooseUs.features.seamless"),
+    t("whyChooseUs.features.insights"),
+    t("whyChooseUs.features.support"),
   ]
 
   return (
@@ -66,35 +67,35 @@ export default function WhyChooseUs() {
             <div className="absolute -left-8 top-12 z-10">
               <div className="flex items-center gap-3 bg-card rounded-full px-4 py-2 shadow-lg border-2 border-primary/20">
                 <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <span className="text-sm font-semibold text-foreground whitespace-nowrap">Trusted Expertise</span>
+                <span className="text-sm font-semibold text-foreground whitespace-nowrap">{features[0]}</span>
               </div>
             </div>
 
             <div className="absolute left-0 top-1/2 z-10">
               <div className="flex items-center gap-3 bg-card rounded-full px-4 py-2 shadow-lg border-2 border-primary/20">
                 <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <span className="text-sm font-semibold text-foreground whitespace-nowrap">Tailored to You</span>
+                <span className="text-sm font-semibold text-foreground whitespace-nowrap">{features[1]}</span>
               </div>
             </div>
 
             <div className="absolute left-1/4 -bottom-4 z-10">
               <div className="flex items-center gap-3 bg-card rounded-full px-4 py-2 shadow-lg border-2 border-primary/20">
                 <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <span className="text-sm font-semibold text-foreground whitespace-nowrap">Seamless Process</span>
+                <span className="text-sm font-semibold text-foreground whitespace-nowrap">{features[2]}</span>
               </div>
             </div>
 
             <div className="absolute -left-6 bottom-12 z-10">
               <div className="flex items-center gap-3 bg-card rounded-full px-4 py-2 shadow-lg border-2 border-primary/20">
                 <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <span className="text-sm font-semibold text-foreground whitespace-nowrap">Strong Market Insights</span>
+                <span className="text-sm font-semibold text-foreground whitespace-nowrap">{features[3]}</span>
               </div>
             </div>
 
             <div className="absolute -bottom-8 right-0 z-10">
               <div className="flex items-center gap-3 bg-card rounded-full px-4 py-2 shadow-lg border-2 border-primary/20">
                 <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <span className="text-sm font-semibold text-foreground whitespace-nowrap">After-Sales Support</span>
+                <span className="text-sm font-semibold text-foreground whitespace-nowrap">{features[4]}</span>
               </div>
             </div>
           </div>
@@ -105,15 +106,14 @@ export default function WhyChooseUs() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
                 <span className="text-sm font-semibold text-muted-foreground tracking-widest uppercase">
-                  Our Benefits
+                  {t("whyChooseUs.benefits")}
                 </span>
               </div>
               <h2 className="text-5xl md:text-6xl font-bold text-foreground leading-tight mb-6 text-balance">
-                Building dreams, one home at a time
+                {t("whyChooseUs.title")}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Our mission goes beyond real estate — it's about guiding you through one of life's biggest milestones
-                with heart, expertise, and unwavering commitment.
+                {t("whyChooseUs.description")}
               </p>
             </div>
 
@@ -132,7 +132,7 @@ export default function WhyChooseUs() {
             </div>
 
             <button className="px-8 py-3 bg-foreground text-background rounded-full font-semibold text-lg hover:bg-foreground/90 transition-colors">
-              More about us
+              {t("common.buttons.moreAboutUs")}
             </button>
           </div>
         </div>

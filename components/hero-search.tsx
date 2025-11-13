@@ -14,8 +14,10 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Input } from "./ui/input"
+import { useI18n } from "./i18n-provider"
 
 export default function HeroSearch() {
+  const { t } = useI18n()
   const [filters, setFilters] = useState({
     type: "all",
     location: "",
@@ -28,32 +30,32 @@ export default function HeroSearch() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         <div>
           <Label className="mb-3 block text-sm font-semibold text-foreground">
-            Property Type
+            {t("search.propertyType")}
           </Label>
           <Select
             value={filters.type}
             onValueChange={(value: string) => setFilters({ ...filters, type: value })}
           >
             <SelectTrigger className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground font-medium focus:ring-1 focus:ring-primary focus:ring-offset-0 w-full">
-              <SelectValue placeholder="Select property type" />
+              <SelectValue placeholder={t("search.selectPropertyType")} />
             </SelectTrigger>
             <SelectContent className="rounded-2xl border-border">
-              <SelectItem value="all">All Types</SelectItem>
-              <SelectItem value="apartment">Apartment</SelectItem>
-              <SelectItem value="house">House</SelectItem>
-              <SelectItem value="penthouse">Penthouse</SelectItem>
-              <SelectItem value="townhouse">Townhouse</SelectItem>
+              <SelectItem value="all">{t("search.allTypes")}</SelectItem>
+              <SelectItem value="apartment">{t("search.apartment")}</SelectItem>
+              <SelectItem value="house">{t("search.house")}</SelectItem>
+              <SelectItem value="penthouse">{t("search.penthouse")}</SelectItem>
+              <SelectItem value="townhouse">{t("search.townhouse")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         <div>
           <Label className="mb-3 block text-sm font-semibold text-foreground">
-            Location
+            {t("search.location")}
           </Label>
           <Input
             type="text"
-            placeholder="Enter location"
+            placeholder={t("search.enterLocation")}
             value={filters.location}
             onChange={(e) => setFilters({ ...filters, location: e.target.value })}
             className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-primary focus-visible:ring-offset-0 w-full"
@@ -62,28 +64,28 @@ export default function HeroSearch() {
 
         <div>
           <Label className="mb-3 block text-sm font-semibold text-foreground">
-            Price Range
+            {t("search.priceRange")}
           </Label>
           <Select
             value={filters.price}
             onValueChange={(value: string) => setFilters({ ...filters, price: value })}
           >
             <SelectTrigger className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground font-medium focus:ring-1 focus:ring-primary focus:ring-offset-0 w-full">
-              <SelectValue placeholder="Select price range" />
+              <SelectValue placeholder={t("search.selectPriceRange")} />
             </SelectTrigger>
             <SelectContent className="rounded-2xl border-border">
-              <SelectItem value="all">Any Price</SelectItem>
-              <SelectItem value="500k">Under $500K</SelectItem>
-              <SelectItem value="500k-1m">$500K - $1M</SelectItem>
-              <SelectItem value="1m-2m">$1M - $2M</SelectItem>
-              <SelectItem value="2m">$2M+</SelectItem>
+              <SelectItem value="all">{t("search.anyPrice")}</SelectItem>
+              <SelectItem value="500k">{t("search.under500k")}</SelectItem>
+              <SelectItem value="500k-1m">{t("search.price500k1m")}</SelectItem>
+              <SelectItem value="1m-2m">{t("search.price1m2m")}</SelectItem>
+              <SelectItem value="2m">{t("search.price2mPlus")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         <div>
           <Label className="mb-3 block text-sm font-semibold text-foreground">
-            Bedrooms
+            {t("search.bedrooms")}
           </Label>
           <Select
             value={filters.bedrooms}
@@ -92,14 +94,14 @@ export default function HeroSearch() {
             }
           >
             <SelectTrigger className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground font-medium focus:ring-1 focus:ring-primary focus:ring-offset-0 w-full">
-              <SelectValue placeholder="Select bedrooms" />
+              <SelectValue placeholder={t("search.selectBedrooms")} />
             </SelectTrigger>
             <SelectContent className="rounded-2xl border-border">
-              <SelectItem value="all">Any Size</SelectItem>
-              <SelectItem value="1">1 Bedroom</SelectItem>
-              <SelectItem value="2">2 Bedrooms</SelectItem>
-              <SelectItem value="3">3 Bedrooms</SelectItem>
-              <SelectItem value="4">4+ Bedrooms</SelectItem>
+              <SelectItem value="all">{t("search.anySize")}</SelectItem>
+              <SelectItem value="1">{t("search.bedroom1")}</SelectItem>
+              <SelectItem value="2">{t("search.bedroom2")}</SelectItem>
+              <SelectItem value="3">{t("search.bedroom3")}</SelectItem>
+              <SelectItem value="4">{t("search.bedroom4Plus")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -107,11 +109,11 @@ export default function HeroSearch() {
         <div className="flex items-end">
           <Button
             asChild
-            className="w-full rounded-2xl py-3 text-base font-bold hover:bg-primary/90"
+            className="w-full rounded-2xl py-3 hover:bg-primary/90"
           >
             <Link href="/properties" className="flex items-center justify-center gap-2">
               <Search className="h-5 w-5" />
-              Search
+              {t("common.buttons.search")}
             </Link>
           </Button>
         </div>

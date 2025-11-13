@@ -9,8 +9,10 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Bed, Bath, Maximize2, MapPin, Phone, Mail, ChevronLeft, Check } from "lucide-react"
 import Image from "next/image"
+import { useI18n } from "@/components/i18n-provider"
 
 export default function PropertyPage() {
+  const { t } = useI18n()
   const params = useParams()
   const propertyId = params.id as string
   const property = mockProperties.find((p) => p.id === propertyId)
@@ -21,13 +23,13 @@ export default function PropertyPage() {
       <main className="min-h-screen bg-background flex flex-col">
         <Navigation />
         <div className="max-w-6xl mx-auto px-6 py-16 md:px-12 text-center pt-32">
-          <h1 className="text-3xl font-bold text-foreground mb-4">Property Not Found</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-4">{t("property.notFound")}</h1>
           <Link
             href="/properties"
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-colors"
           >
             <ChevronLeft className="w-4 h-4" />
-            Back to Properties
+            {t("property.backToProperties")}
           </Link>
         </div>
         <Footer />
@@ -47,7 +49,7 @@ export default function PropertyPage() {
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-semibold mb-8 transition-colors"
           >
             <ChevronLeft className="w-5 h-5" />
-            Back to Properties
+            {t("property.backToProperties")}
           </Link>
 
           {/* Image Gallery */}
@@ -104,37 +106,37 @@ export default function PropertyPage() {
                     <Bed className="w-6 h-6 text-primary" />
                     <span className="text-3xl font-bold text-foreground">{property.beds}</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">Bedrooms</p>
+                  <p className="text-sm text-muted-foreground">{t("property.bedrooms")}</p>
                 </div>
                 <div className="bg-secondary/20 rounded-2xl p-6">
                   <div className="flex items-center gap-3 mb-2">
                     <Bath className="w-6 h-6 text-primary" />
                     <span className="text-3xl font-bold text-foreground">{property.baths}</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">Bathrooms</p>
+                  <p className="text-sm text-muted-foreground">{t("property.bathrooms")}</p>
                 </div>
                 <div className="bg-secondary/20 rounded-2xl p-6">
                   <div className="flex items-center gap-3 mb-2">
                     <Maximize2 className="w-6 h-6 text-primary" />
                     <span className="text-3xl font-bold text-foreground">{(property.sqft / 1000).toFixed(1)}k</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">Sq. Ft.</p>
+                  <p className="text-sm text-muted-foreground">{t("property.sqft")}</p>
                 </div>
               </div>
 
               {/* Description */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-foreground mb-4">About This Property</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">{t("property.about")}</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-8">{property.description}</p>
               </div>
 
               {/* Features */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-foreground mb-6">Features & Amenities</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-6">{t("property.features")}</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {property.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-3 bg-secondary/10 rounded-2xl p-4">
-                      <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                      <Check className="w-5 h-5 text-primary shrink-0" />
                       <span className="text-foreground font-medium">{feature}</span>
                     </div>
                   ))}
@@ -145,7 +147,7 @@ export default function PropertyPage() {
             {/* Contact Card */}
             <div className="lg:col-span-1">
               <div className="bg-card rounded-3xl p-8 border border-border sticky top-24">
-                <h3 className="text-2xl font-bold text-foreground mb-6">Get in Touch</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-6">{t("property.getInTouch")}</h3>
 
                 <div className="space-y-6 mb-8">
                   <a
@@ -156,7 +158,7 @@ export default function PropertyPage() {
                       <Phone className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Call Us</p>
+                      <p className="text-sm text-muted-foreground">{t("property.callUs")}</p>
                       <p className="font-semibold">{FIRM_INFO.phone}</p>
                     </div>
                   </a>
@@ -169,20 +171,20 @@ export default function PropertyPage() {
                       <Mail className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Email Us</p>
+                      <p className="text-sm text-muted-foreground">{t("property.emailUs")}</p>
                       <p className="font-semibold text-sm">{FIRM_INFO.email}</p>
                     </div>
                   </a>
                 </div>
 
                 <button className="w-full bg-primary text-primary-foreground py-3 rounded-2xl font-bold hover:bg-primary/90 transition-colors mb-3">
-                  Schedule a Viewing
+                  {t("common.buttons.scheduleViewing")}
                 </button>
                 <Link
                   href="/contact"
                   className="block text-center w-full bg-secondary/20 text-foreground py-3 rounded-2xl font-bold hover:bg-secondary/30 transition-colors"
                 >
-                  Learn More
+                  {t("common.buttons.learnMore")}
                 </Link>
               </div>
             </div>

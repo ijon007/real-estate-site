@@ -6,8 +6,10 @@ import PropertyCard from "@/components/property-card"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { ChevronDown } from "lucide-react"
+import { useI18n } from "@/components/i18n-provider"
 
 export default function PropertiesPage() {
+  const { t } = useI18n()
   const [priceRange, setPriceRange] = useState([0, 3000000])
   const [beds, setBeds] = useState<number | null>(null)
   const [baths, setBaths] = useState<number | null>(null)
@@ -52,9 +54,9 @@ export default function PropertiesPage() {
 
       <div className="px-6 py-8 md:px-12 flex-1">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl font-bold text-foreground mb-2">Browse Properties</h1>
+          <h1 className="text-5xl font-bold text-foreground mb-2">{t("properties.title")}</h1>
           <p className="text-lg text-muted-foreground mb-12">
-            Discover {filteredProperties.length} luxury properties available
+            {t("properties.description", { count: filteredProperties.length })}
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -62,18 +64,18 @@ export default function PropertiesPage() {
             <div className="lg:col-span-1">
               <div className="bg-card rounded-3xl p-6 border border-border sticky top-24">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold text-foreground">Filters</h3>
+                  <h3 className="text-xl font-bold text-foreground">{t("properties.filters.title")}</h3>
                   <button
                     onClick={resetFilters}
                     className="text-sm text-primary hover:text-primary/80 font-semibold transition-colors"
                   >
-                    Reset
+                    {t("properties.filters.reset")}
                   </button>
                 </div>
 
                 {/* Price Filter */}
                 <div className="mb-8">
-                  <label className="block text-sm font-semibold text-foreground mb-3">Price Range</label>
+                  <label className="block text-sm font-semibold text-foreground mb-3">{t("properties.filters.priceRange")}</label>
                   <div className="space-y-3">
                     <input
                       type="range"
@@ -92,7 +94,7 @@ export default function PropertiesPage() {
 
                 {/* Bedrooms Filter */}
                 <div className="mb-8">
-                  <label className="block text-sm font-semibold text-foreground mb-3">Bedrooms</label>
+                  <label className="block text-sm font-semibold text-foreground mb-3">{t("properties.filters.bedrooms")}</label>
                   <div className="grid grid-cols-3 gap-2">
                     {[2, 3, 4, 5].map((bed) => (
                       <button
@@ -112,7 +114,7 @@ export default function PropertiesPage() {
 
                 {/* Bathrooms Filter */}
                 <div className="mb-8">
-                  <label className="block text-sm font-semibold text-foreground mb-3">Bathrooms</label>
+                  <label className="block text-sm font-semibold text-foreground mb-3">{t("properties.filters.bathrooms")}</label>
                   <div className="grid grid-cols-3 gap-2">
                     {[1, 2, 3, 4].map((bath) => (
                       <button
@@ -135,16 +137,16 @@ export default function PropertiesPage() {
             {/* Properties Grid */}
             <div className="lg:col-span-3">
               <div className="flex items-center justify-between mb-8">
-                <p className="text-muted-foreground font-medium">{filteredProperties.length} properties found</p>
+                <p className="text-muted-foreground font-medium">{t("properties.results.found", { count: filteredProperties.length })}</p>
                 <div className="relative">
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
                     className="appearance-none bg-card text-foreground px-4 py-2 pr-10 rounded-xl border border-border font-medium cursor-pointer hover:border-primary/50 transition-colors"
                   >
-                    <option value="featured">Featured</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
+                    <option value="featured">{t("properties.sorting.featured")}</option>
+                    <option value="price-low">{t("properties.sorting.priceLow")}</option>
+                    <option value="price-high">{t("properties.sorting.priceHigh")}</option>
                   </select>
                   <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
                 </div>
@@ -159,7 +161,7 @@ export default function PropertiesPage() {
               ) : (
                 <div className="text-center py-16">
                   <p className="text-xl text-muted-foreground font-medium">
-                    No properties match your filters. Try adjusting your criteria.
+                    {t("properties.results.noResults")}
                   </p>
                 </div>
               )}

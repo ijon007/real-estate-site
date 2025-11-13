@@ -3,12 +3,15 @@
 import Link from "next/link"
 import type { Property } from "@/lib/mock-data"
 import { Bed, Bath, Maximize2 } from "lucide-react"
+import { useI18n } from "./i18n-provider"
 
 interface PropertyCardProps {
   property: Property
 }
 
 export default function PropertyCard({ property }: PropertyCardProps) {
+  const { t } = useI18n()
+
   return (
     <Link href={`/property/${property.id}`}>
       <div className="bg-card rounded-3xl overflow-hidden border border-border hover:border-primary/50 transition-all hover:shadow-lg cursor-pointer group">
@@ -30,15 +33,15 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           <div className="flex items-center gap-4 mb-4 pb-4 border-b border-border text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
               <Bed className="w-4 h-4 text-primary" />
-              {property.beds} Beds
+              {property.beds} {t("propertyCard.beds")}
             </div>
             <div className="flex items-center gap-1">
               <Bath className="w-4 h-4 text-primary" />
-              {property.baths} Baths
+              {property.baths} {t("propertyCard.baths")}
             </div>
             <div className="flex items-center gap-1">
               <Maximize2 className="w-4 h-4 text-primary" />
-              {property.sqft.toLocaleString()} sqft
+              {property.sqft.toLocaleString()} {t("propertyCard.sqft")}
             </div>
           </div>
 

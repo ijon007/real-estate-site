@@ -1,8 +1,13 @@
+"use client"
+
 import Link from "next/link"
 import { FIRM_INFO } from "@/lib/constants"
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react"
+import { useI18n } from "./i18n-provider"
 
 export default function Footer() {
+  const { t } = useI18n()
+
   return (
     <footer className="bg-card border-t border-border">
       <div className="px-6 py-16 md:px-12">
@@ -34,22 +39,22 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="font-bold text-foreground mb-6 text-lg">Quick Links</h4>
+              <h4 className="font-bold text-foreground mb-6 text-lg">{t("common.footer.quickLinks")}</h4>
               <div className="space-y-3">
                 <Link href="/" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Home
+                  {t("common.footer.home")}
                 </Link>
                 <Link href="/properties" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Properties
+                  {t("common.footer.properties")}
                 </Link>
                 <Link href="/contact" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Contact
+                  {t("common.footer.contact")}
                 </Link>
               </div>
             </div>
 
             <div>
-              <h4 className="font-bold text-foreground mb-6 text-lg">Contact</h4>
+              <h4 className="font-bold text-foreground mb-6 text-lg">{t("common.footer.contact")}</h4>
               <div className="space-y-4">
                 <a
                   href={`tel:${FIRM_INFO.phone}`}

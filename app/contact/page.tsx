@@ -7,8 +7,10 @@ import Link from "next/link"
 import Navigation from "@/components/navigation"
 import { FIRM_INFO } from "@/lib/constants"
 import { Phone, Mail, MapPin, Send } from "lucide-react"
+import { useI18n } from "@/components/i18n-provider"
 
 export default function ContactPage() {
+  const { t } = useI18n()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,27 +34,27 @@ export default function ContactPage() {
   const contactCards = [
     {
       icon: Mail,
-      title: "Send an Email",
-      description: "Get in touch via email and we'll respond within 24 hours",
-      buttonText: "Send Email",
+      title: t("contact.cards.sendEmail.title"),
+      description: t("contact.cards.sendEmail.description"),
+      buttonText: t("contact.cards.sendEmail.button"),
       href: `mailto:${FIRM_INFO.email}`,
       bgColor: "bg-blue-50",
       borderColor: "border-blue-100",
     },
     {
       icon: MapPin,
-      title: "Visit Us",
+      title: t("contact.cards.visitUs.title"),
       description: `${FIRM_INFO.address}`,
-      buttonText: "Get Directions",
+      buttonText: t("contact.cards.visitUs.button"),
       href: "#",
       bgColor: "bg-background",
       borderColor: "border-border",
     },
     {
       icon: Phone,
-      title: "Book a Call",
-      description: "Schedule a consultation with our luxury real estate experts",
-      buttonText: "Schedule Now",
+      title: t("contact.cards.bookCall.title"),
+      description: t("contact.cards.bookCall.description"),
+      buttonText: t("contact.cards.bookCall.button"),
       href: "#",
       bgColor: "bg-primary",
       borderColor: "border-primary",
@@ -66,9 +68,9 @@ export default function ContactPage() {
 
       {/* Hero Section */}
       <section className="px-6 py-20 md:px-12 md:py-32 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">Get in Touch</h1>
+        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">{t("contact.title")}</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          We're here to help you find your perfect property
+          {t("contact.subtitle")}
         </p>
       </section>
 
