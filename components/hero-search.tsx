@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Search } from "lucide-react"
+import { Search, CheckIcon, MapPin } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
@@ -13,8 +13,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Input } from "./ui/input"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command"
+import { cn } from "@/lib/utils"
 import { useI18n } from "./i18n-provider"
+
+const locations = [
+  { value: "tirana", label: "Tirana" },
+  { value: "durres", label: "Durres" },
+  { value: "vlore", label: "Vlore" },
+  { value: "sarande", label: "Sarande" },
+]
 
 export default function HeroSearch() {
   const { t } = useI18n()
@@ -24,6 +44,7 @@ export default function HeroSearch() {
     price: "all",
     bedrooms: "all",
   })
+  const [locationOpen, setLocationOpen] = useState(false)
 
   return (
     <div className="bg-white rounded-3xl p-8 md:p-10 border border-border/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
@@ -53,13 +74,52 @@ export default function HeroSearch() {
           <Label className="mb-3 block text-sm font-semibold text-foreground">
             {t("search.location")}
           </Label>
-          <Input
-            type="text"
-            placeholder={t("search.enterLocation")}
-            value={filters.location}
-            onChange={(e) => setFilters({ ...filters, location: e.target.value })}
-            className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-primary focus-visible:ring-offset-0 w-full"
-          />
+          <Popover open={locationOpen} onOpenChange={setLocationOpen}>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                role="combobox"
+                aria-expanded={locationOpen}
+                className="w-full justify-between rounded-2xl border-border bg-muted px-4 py-3 text-foreground font-medium hover:bg-muted focus:ring-1 focus:ring-primary focus:ring-offset-0"
+              >
+                {filters.location
+                  ? locations.find((loc) => loc.value === filters.location)?.label
+                  : t("search.enterLocation")}
+                <MapPin className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-(--radix-popover-trigger-width) p-0 rounded-2xl border-border">
+              <Command>
+                <CommandInput placeholder={t("search.enterLocation")} />
+                <CommandList>
+                  <CommandEmpty>No location found.</CommandEmpty>
+                  <CommandGroup>
+                    {locations.map((location) => (
+                      <CommandItem
+                        key={location.value}
+                        value={location.value}
+                        onSelect={(currentValue) => {
+                          setFilters({
+                            ...filters,
+                            location: currentValue === filters.location ? "" : currentValue,
+                          })
+                          setLocationOpen(false)
+                        }}
+                      >
+                        <CheckIcon
+                          className={cn(
+                            "mr-2 h-4 w-4",
+                            filters.location === location.value ? "opacity-100" : "opacity-0"
+                          )}
+                        />
+                        {location.label}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </CommandList>
+              </Command>
+            </PopoverContent>
+          </Popover>
         </div>
 
         <div>
