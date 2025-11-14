@@ -188,6 +188,28 @@ export const translations: Record<Language, Translations> = {
     about: {
       title: "About Us",
       subtitle: "Your trusted partner in luxury real estate",
+      hero: {
+        title: "Building dreams, one home at a time",
+        description: "We're more than real estate agents — we're your trusted partners, helping you find the right property with confidence and ease.",
+        contactButton: "Contact us",
+      },
+      stats: {
+        propertiesSold: {
+          value: "$150M+",
+          label: "Properties sold",
+          description: "Over $150M in sales, helping clients find homes and investments with ease and confidence.",
+        },
+        happyClients: {
+          value: "500+",
+          label: "Happy clients",
+          description: "More than 500 satisfied clients trust us to make their real estate journey smooth and successful.",
+        },
+        yearsExperience: {
+          value: "20+",
+          label: "Years of expertise",
+          description: "Over 20 years of experience guiding clients with market insight and professional advice.",
+        },
+      },
       company: {
         title: "Our Story",
         description:
@@ -423,6 +445,28 @@ export const translations: Record<Language, Translations> = {
     about: {
       title: "Rreth Nesh",
       subtitle: "Partneri juaj i besueshëm në pasuri të paluajtshme luksoze",
+      hero: {
+        title: "Ndërtimi i ëndrrave, një shtëpi në një kohë",
+        description: "Ne jemi më shumë se agjentë pasurish të paluajtshme — ne jemi partnerët tuaj të besueshëm, duke ju ndihmuar të gjeni pronën e duhur me besim dhe lehtësi.",
+        contactButton: "Na kontaktoni",
+      },
+      stats: {
+        propertiesSold: {
+          value: "$150M+",
+          label: "Prona të shitura",
+          description: "Mbi $150M në shitje, duke ndihmuar klientët të gjejnë shtëpi dhe investime me lehtësi dhe besim.",
+        },
+        happyClients: {
+          value: "500+",
+          label: "Klientë të kënaqur",
+          description: "Më shumë se 500 klientë të kënaqur na besojnë për ta bërë udhëtimin e tyre të pasurive të paluajtshme të qetë dhe të suksesshëm.",
+        },
+        yearsExperience: {
+          value: "20+",
+          label: "Vite përvojë",
+          description: "Mbi 20 vjet përvojë duke udhëhequr klientët me njohuri të tregut dhe këshilla profesionale.",
+        },
+      },
       company: {
         title: "Historia Jonë",
         description:

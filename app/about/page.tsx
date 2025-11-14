@@ -6,8 +6,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { useI18n } from "@/components/i18n-provider"
 import { Button } from "@/components/ui/button"
-import { Mail, Phone } from "lucide-react"
-import { FIRM_INFO } from "@/lib/constants"
+import CalAIWidget from "@/components/calai"
 
 const teamMembers = [
   {
@@ -47,36 +46,88 @@ export default function AboutPage() {
     <main className="min-h-screen bg-background flex flex-col pt-24">
       <Navigation />
 
-      <section className="px-6 py-20 md:px-12 md:py-32 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">{t("about.title")}</h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t("about.subtitle")}</p>
+      <section className="px-6 md:px-12 py-20 md:py-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-semibold text-foreground mb-6">
+                {t("about.hero.title")}
+              </h1>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                {t("about.hero.description")}
+              </p>
+              <CalAIWidget className="bg-primary text-white hover:bg-primary/90 py-5 px-8 rounded-full w-40" buttonText={t("about.hero.contactButton")} />
+            </div>
+            <div className="hidden lg:block"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+            <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
+              <Image
+                src="/grand-foyer-estate.jpg"
+                alt="Modern interior staircase"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
+              <Image
+                src="/luxury-estate-mansion.jpg"
+                alt="Contemporary houses"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div className="border-r border-border pr-8">
+              <h3 className="text-4xl md:text-5xl font-semibold text-foreground mb-2">
+                {t("about.stats.propertiesSold.value")}
+              </h3>
+              <p className="text-lg font-semibold text-foreground mb-4">
+                {t("about.stats.propertiesSold.label")}
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                {t("about.stats.propertiesSold.description")}
+              </p>
+            </div>
+            <div className="border-r border-border pr-8">
+              <h3 className="text-4xl md:text-5xl font-semibold text-foreground mb-2">
+                {t("about.stats.happyClients.value")}
+              </h3>
+              <p className="text-lg font-semibold text-foreground mb-4">
+                {t("about.stats.happyClients.label")}
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                {t("about.stats.happyClients.description")}
+              </p>
+            </div>
+            <div>
+              <h3 className="text-4xl md:text-5xl font-semibold text-foreground mb-2">
+                {t("about.stats.yearsExperience.value")}
+              </h3>
+              <p className="text-lg font-semibold text-foreground mb-4">
+                {t("about.stats.yearsExperience.label")}
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                {t("about.stats.yearsExperience.description")}
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="px-6 md:px-12 pb-20 flex-1">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">{t("about.company.title")}</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              {t("about.company.description")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-            <div className="bg-card rounded-3xl p-8 border border-border">
-              <h3 className="text-2xl font-bold text-foreground mb-4">{t("about.company.mission")}</h3>
-              <p className="text-muted-foreground leading-relaxed">{t("about.company.missionDescription")}</p>
-            </div>
-            <div className="bg-card rounded-3xl p-8 border border-border">
-              <h3 className="text-2xl font-bold text-foreground mb-4">{t("about.company.values")}</h3>
-              <p className="text-muted-foreground leading-relaxed">{t("about.company.valuesDescription")}</p>
-            </div>
-          </div>
-
-          <div className="mb-12 text-center">
-            <h2 className="text-4xl font-bold text-foreground mb-3">{t("about.team.title")}</h2>
-            <p className="text-lg text-muted-foreground">{t("about.team.subtitle")}</p>
-          </div>
-
+      <section className="px-6 md:px-12 pb-[400px] md:pb-[600px] flex-1">
+        <div className="max-w-7xl mx-auto">
+          <h3 className="text-4xl md:text-5xl font-semibold text-foreground mb-6">
+            {t("about.team.title")}
+          </h3>
+          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            {t("about.team.subtitle")}
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, idx) => (
               <div
@@ -96,15 +147,6 @@ export default function AboutPage() {
                 <p className="text-muted-foreground mb-4">{member.role}</p>
               </div>
             ))}
-          </div>
-
-          <div className="mt-16 text-center">
-            <Button
-              asChild
-              className="group flex items-center justify-center w-60 mx-auto rounded-full py-6 px-10 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
-            >
-              <Link href="/contact">{t("common.nav.contactUs")}</Link>
-            </Button>
           </div>
         </div>
       </section>
