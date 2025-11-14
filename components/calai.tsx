@@ -6,7 +6,7 @@ import { useI18n } from "./i18n-provider";
 import { Button } from "./ui/button";
 import { Calendar } from "lucide-react";
 
-function CalAIWidget({ property }: { property?: boolean }) {
+function CalAIWidget({ property, className, buttonText }: { property?: boolean; className?: string; buttonText?: string }) {
   const { t } = useI18n();
 
   useEffect(() => {
@@ -20,15 +20,15 @@ function CalAIWidget({ property }: { property?: boolean }) {
     <Button 
       data-cal-namespace="30min"
       data-cal-link="core-point-dev/30min"
-      className={`w-full py-5 px-6 rounded-full text-center ${
+      className={className || `w-full py-5 px-6 rounded-full text-center ${
         property
           ? "bg-primary text-white hover:bg-primary/90 py-6"
-          : "bg-white text-primary hover:bg-white/90"
+          : "bg-white text-black hover:bg-white/90"
       }`}
       data-cal-config='{"layout":"month_view","theme":"light"}'
     >
       <Calendar className="w-5 h-5" />
-      {t("common.buttons.scheduleConsultation")}
+      {buttonText || t("common.buttons.scheduleConsultation")}
     </Button>
   );
 }

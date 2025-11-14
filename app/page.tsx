@@ -9,7 +9,9 @@ import Navigation from "@/components/navigation"
 import HeroSearch from "@/components/hero-search"
 import Footer from "@/components/footer"
 import WhyChooseUs from "@/components/why-choose-us"
+import FAQSection from "@/components/faq-section"
 import CTASection from "@/components/cta-section"
+import ProcessSection from "@/components/process-section"
 import { useI18n } from "@/components/i18n-provider"
 import { Button } from "@/components/ui/button"
 
@@ -47,8 +49,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col items-center justify-center gap-10 px-6 py-20 md:px-12 max-w-6xl mx-auto">
-        <div className="mb-12">
+      <section className="flex flex-col items-center justify-center gap-10 px-6 py-20 md:px-12 mx-auto">
+        <div className="mb-12 flex flex-col items-center justify-center">
           <h2 className="text-4xl font-bold text-foreground mb-3">{t("home.featured.title")}</h2>
           <p className="text-lg text-muted-foreground">{t("home.featured.description")}</p>
         </div>
@@ -72,9 +74,9 @@ export default function Home() {
 
       <WhyChooseUs />
 
-      <section className="px-6 py-20 md:px-12 max-w-6xl mx-auto">
-        <CTASection />
-      </section>
+      <ProcessSection />
+
+      <FAQSection />
 
       <Footer />
     </main>

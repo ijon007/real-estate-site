@@ -1,108 +1,41 @@
 "use client"
 
-import { Mail, Phone } from "lucide-react"
+import Image from "next/image"
 import { useI18n } from "./i18n-provider"
-import { Button } from "./ui/button"
 import CalAIWidget from "./calai"
-import { FIRM_INFO } from "@/lib/constants"
 
 export default function CTASection() {
   const { t } = useI18n()
 
-  // Encode address for Google Maps embed
-  const encodedAddress = encodeURIComponent(FIRM_INFO.address)
-  const mapEmbedUrl = `https://www.google.com/maps?q=${encodedAddress}&output=embed`
-
-  const ctaCards = [
-    {
-      icon: Mail,
-      title: t("contact.cards.sendEmail.title"),
-      description: t("contact.cards.sendEmail.description"),
-      buttonText: t("contact.cards.sendEmail.button"),
-      href: `mailto:${FIRM_INFO.email}`,
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-100",
-      isEmail: true,
-    },
-    {
-      icon: Phone,
-      title: t("contact.cards.bookCall.title"),
-      description: t("contact.cards.bookCall.description"),
-      buttonText: t("contact.cards.bookCall.button"),
-      href: "#",
-      bgColor: "bg-primary",
-      borderColor: "border-primary",
-      isDark: true,
-      isBooking: true,
-    },
-  ]
-
   return (
-    <>
-      <section className="px-6 py-20 md:px-12 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">{t("contact.title")}</h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          {t("contact.subtitle")}
+    <section className="relative max-w-7xl mx-auto h-[600px] md:h-[700px] overflow-hidden rounded-xl">
+      <div className="absolute inset-0">
+        <Image
+          src="/luxury-estate-mansion.jpg"
+          alt="Luxury estate"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-96 md:h-[500px] bg-linear-to-t from-black to-transparent"></div>
+      </div>
+
+      <div className="relative z-10 h-full flex flex-col items-center justify-center px-6 md:px-12 text-center">
+        <h1 className="text-5xl font-semibold text-white mb-6 max-w-4xl">
+          {t("home.cta.title")}
+        </h1>
+        <p className="text-lg md:text-xl text-white max-w-3xl mx-auto mb-8 leading-relaxed">
+          {t("home.cta.description")}
         </p>
-      </section>
-
-      <section className="px-6 md:px-12 pb-20 flex-1">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12 rounded-2xl overflow-hidden shadow-lg w-full">
-            <iframe
-              width="100%"
-              height="500"
-              style={{ border: 0 }}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              src={mapEmbedUrl}
-              className="w-full"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-            {ctaCards.map((card, idx) => {
-              const Icon = card.icon
-              return (
-                <div
-                  key={idx}
-                  className={`rounded-4xl p-8 md:p-10 border-2 transition-all duration-300 ${card.bgColor} ${card.borderColor}`}
-                >
-                  <div
-                    className={`inline-block p-4 rounded-full mb-6 ${card.isDark ? "bg-primary-foreground/20" : "bg-primary/10"}`}
-                  >
-                    <Icon className={`w-6 h-6 ${card.isDark ? "text-primary-foreground" : "text-primary"}`} />
-                  </div>
-
-                  <h3
-                    className={`text-2xl font-bold mb-3 ${card.isDark ? "text-primary-foreground" : "text-foreground"}`}
-                  >
-                    {card.title}
-                  </h3>
-
-                  <p
-                    className={`mb-8 leading-relaxed ${card.isDark ? "text-primary-foreground/90" : "text-muted-foreground"}`}
-                  >
-                    {card.description}
-                  </p>
-
-                  {card.isBooking ? (
-                    <CalAIWidget />
-                  ) : card.isEmail ? (
-                    <Button
-                      asChild
-                      className="w-full py-5 px-6 rounded-full text-center transition-colors duration-200"
-                    >
-                      <a href={card.href}>{card.buttonText}</a>
-                    </Button>
-                  ) : null}
-                </div>
-              )
-            })}
-          </div>
+        <div className="w-full max-w-xs">
+          <CalAIWidget 
+            className="w-full bg-white text-black hover:bg-white/90 py-6 px-8 rounded-full font-semibold text-base" 
+            buttonText={t("home.cta.button")}
+          />
         </div>
-      </section>
-    </>
-    )
+      </div>
+    </section>
+  )
 }

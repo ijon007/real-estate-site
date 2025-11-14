@@ -13,6 +13,11 @@ export interface Translations {
       home: string
       contact: string
       properties: string
+      company: string
+      ourAgents: string
+      contactUs: string
+      useForFree: string
+      moreTemplates: string
     }
     buttons: {
       search: string
@@ -36,6 +41,27 @@ export interface Translations {
     featured: {
       title: string
       description: string
+    }
+    process: {
+      title: string
+      description: string
+      step1: {
+        title: string
+        description: string
+      }
+      step2: {
+        title: string
+        description: string
+      }
+      step3: {
+        title: string
+        description: string
+      }
+      step4: {
+        title: string
+        description: string
+      }
+      button: string
     }
     cta: {
       title: string
@@ -163,6 +189,37 @@ export interface Translations {
     team: {
       title: string
       subtitle: string
+    }
+  }
+  faq: {
+    label: string
+    title: string
+    subtitle: string
+    questions: {
+      q1: {
+        question: string
+        answer: string
+      }
+      q2: {
+        question: string
+        answer: string
+      }
+      q3: {
+        question: string
+        answer: string
+      }
+      q4: {
+        question: string
+        answer: string
+      }
+      q5: {
+        question: string
+        answer: string
+      }
+      q6: {
+        question: string
+        answer: string
+      }
     }
   }
 }

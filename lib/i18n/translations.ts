@@ -14,6 +14,11 @@ export const translations: Record<Language, Translations> = {
         home: "Home",
         contact: "Contact",
         properties: "Properties",
+        company: "Company",
+        ourAgents: "Our Agents",
+        contactUs: "Contact Us",
+        useForFree: "Use for FREE",
+        moreTemplates: "More Templates",
       },
       buttons: {
         search: "Search",
@@ -38,6 +43,28 @@ export const translations: Record<Language, Translations> = {
       featured: {
         title: "Featured Properties",
         description: "Handpicked selections from our premium collection",
+      },
+      process: {
+        title: "Simple steps to your dream home",
+        description:
+          "We make buying, selling, or investing in property effortless. Here's how we guide you every step of the way.",
+        step1: {
+          title: "Discover",
+          description: "We start by understanding your goals and lifestyle, then curate properties that match.",
+        },
+        step2: {
+          title: "Experience",
+          description: "Guided viewings and expert insights help you explore the best options with confidence.",
+        },
+        step3: {
+          title: "Secure",
+          description: "From negotiation to closing, we ensure a seamless, stress-free transaction.",
+        },
+        step4: {
+          title: "Settle",
+          description: "Move into your new home with peace of mind, knowing we're here for ongoing support.",
+        },
+        button: "Start your journey",
       },
       cta: {
         title: "Ready to find your dream home?",
@@ -177,6 +204,37 @@ export const translations: Record<Language, Translations> = {
         subtitle: "Experienced professionals dedicated to your success",
       },
     },
+    faq: {
+      label: "FAQ",
+      title: "Frequently Asked Questions",
+      subtitle: "Got questions? We've answered some of the most common ones to guide you through your real estate journey.",
+      questions: {
+        q1: {
+          question: "How do I start the process of buying a home?",
+          answer: "Simply reach out to us for a consultation. We'll discuss your goals, budget, and preferences, then guide you step by step.",
+        },
+        q2: {
+          question: "Do I need to get pre-approved for a mortgage first?",
+          answer: "While not required, getting pre-approved is highly recommended. It helps you understand your budget and makes you a more competitive buyer in the market.",
+        },
+        q3: {
+          question: "What types of properties do you specialize in?",
+          answer: "We specialize in luxury properties including penthouses, estates, waterfront homes, and high-end residential properties. We also handle commercial real estate investments.",
+        },
+        q4: {
+          question: "How long does the buying process usually take?",
+          answer: "The timeline varies, but typically ranges from 30 to 90 days from offer acceptance to closing. Factors include financing, inspections, and negotiations.",
+        },
+        q5: {
+          question: "Do you assist with selling properties as well?",
+          answer: "Yes, we provide comprehensive selling services including market analysis, staging recommendations, marketing strategies, and negotiation support to maximize your property's value.",
+        },
+        q6: {
+          question: "What makes your agency different from others?",
+          answer: "We combine decades of luxury market expertise with personalized service, cutting-edge technology, and a commitment to exceeding expectations. Our client-first approach ensures a seamless experience from start to finish.",
+        },
+      },
+    },
   },
   sq: {
     common: {
@@ -191,6 +249,11 @@ export const translations: Record<Language, Translations> = {
         home: "Shtëpia",
         contact: "Na Kontaktoni",
         properties: "Pronat",
+        company: "Kompania",
+        ourAgents: "Agjentët Tanë",
+        contactUs: "Na Kontaktoni",
+        useForFree: "Use for FREE",
+        moreTemplates: "More Templates",
       },
       buttons: {
         search: "Kërko",
@@ -216,11 +279,33 @@ export const translations: Record<Language, Translations> = {
         title: "Pronat e Veçanta",
         description: "Përzgjedhje të zgjedhura me kujdes nga koleksioni ynë premium",
       },
+      process: {
+        title: "Hapa të thjeshtë drejt shtëpisë suaj të ëndrrave",
+        description:
+          "Ne e bëjmë blerjen, shitjen ose investimin në pronë pa përpjekje. Ja si ju udhëheqim në çdo hap të rrugës.",
+        step1: {
+          title: "Zbuloni",
+          description: "Fillojmë duke kuptuar objektivat dhe stilin tuaj të jetesës, pastaj kurojmë pronat që përputhen.",
+        },
+        step2: {
+          title: "Eksperiencë",
+          description: "Vizitat e udhëhequra dhe njohuritë eksperte ju ndihmojnë të eksploroni opsionet më të mira me besim.",
+        },
+        step3: {
+          title: "Sigurohuni",
+          description: "Nga negociatat deri në mbyllje, ne sigurojmë një transaksion pa probleme dhe pa stres.",
+        },
+        step4: {
+          title: "Vendosni",
+          description: "Shkoni në shtëpinë tuaj të re me qetësi, duke ditur që ne jemi këtu për mbështetje të vazhdueshme.",
+        },
+        button: "Filloni udhëtimin tuaj",
+      },
       cta: {
         title: "Gati të gjeni shtëpinë tuaj të ëndrrave?",
         description:
-          "Qoftë se po blini, shisni ose investoni, ekipi ynë është këtu për t'ju udhëhequr në çdo hap të rrugës. Le ta bëjmë hapin tuaj të ardhshëm të thjeshtë dhe të suksesshëm.",
-        button: "Cakto një konsultim",
+          "Qoftë për blerje, shitje apo investim, ekipi ynë është këtu për t'ju udhëhequr në çdo hap të rrugëtimit tuaj.",
+        button: "Rezervo një konsultë",
       },
     },
     properties: {
@@ -352,6 +437,37 @@ export const translations: Record<Language, Translations> = {
       team: {
         title: "Njihuni me Ekipin Tonë",
         subtitle: "Profesionistë me përvojë të dedikuar për suksesin tuaj",
+      },
+    },
+    faq: {
+      label: "Pyetje të Shpeshta",
+      title: "Pyetje të Shpeshta",
+      subtitle: "Keni pyetje? Ne kemi përgjigjur disa nga më të zakonshmet për t'ju udhëhequr nëpër udhëtimin tuaj të pasurive të paluajtshme.",
+      questions: {
+        q1: {
+          question: "Si filloj procesin e blerjes së një shtëpie?",
+          answer: "Thjesht na kontaktoni për një konsultim. Do të diskutojmë objektivat, buxhetin dhe preferencat tuaja, pastaj do t'ju udhëheqim hap pas hapi.",
+        },
+        q2: {
+          question: "A duhet të merr parapëlqim për hipotekë së pari?",
+          answer: "Megjithëse nuk kërkohet, marrja e parapëlqimit rekomandohet shumë. Kjo ju ndihmon të kuptoni buxhetin tuaj dhe ju bën një blerës më konkurrues në treg.",
+        },
+        q3: {
+          question: "Në çfarë lloje pronash specializoheni?",
+          answer: "Ne specializohemi në pronat luksoze duke përfshirë penthouse, estate, shtëpi me pamje deti dhe pronat rezidenciale të larta. Ne gjithashtu merremi me investimet e pasurive të paluajtshme komerciale.",
+        },
+        q4: {
+          question: "Sa kohë zakonisht zgjat procesi i blerjes?",
+          answer: "Afati kohor ndryshon, por zakonisht varion nga 30 deri në 90 ditë nga pranimi i ofertës deri në mbyllje. Faktorët përfshijnë financimin, inspektimet dhe negociatat.",
+        },
+        q5: {
+          question: "A ndihmoni edhe me shitjen e pronave?",
+          answer: "Po, ne ofrojmë shërbime gjithëpërfshirëse shitjeje duke përfshirë analizën e tregut, rekomandimet e dekorimit, strategjitë e marketingut dhe mbështetjen e negociatave për të maksimizuar vlerën e pronës suaj.",
+        },
+        q6: {
+          question: "Çfarë e bën agjencinë tuaj të ndryshme nga të tjerat?",
+          answer: "Ne kombinojmë dekada ekspertize të tregut luksoz me shërbim të personalizuar, teknologji të avancuar dhe një angazhim për të tejkaluar pritjet. Qasja jonë e fokusuar te klienti siguron një përvojë pa probleme nga fillimi deri në fund.",
+        },
       },
     },
   },

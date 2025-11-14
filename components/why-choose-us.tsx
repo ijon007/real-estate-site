@@ -36,11 +36,8 @@ export default function WhyChooseUs() {
     <section className="px-6 py-24 md:px-12 bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left side - Image Mosaic with floating labels */}
           <div className="relative h-96 md:h-[500px] lg:h-[550px]">
-            {/* Main image grid */}
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-4">
-              {/* Top left - Large */}
               <div className="col-span-1 row-span-2 bg-primary/10 rounded-3xl overflow-hidden border-4 border-primary/20">
                 <img
                   src="/modern-luxury-penthouse-waterfront.jpg"
@@ -49,12 +46,10 @@ export default function WhyChooseUs() {
                 />
               </div>
 
-              {/* Top right */}
               <div className="bg-primary/10 rounded-3xl overflow-hidden border-4 border-primary/20">
                 <img src="/luxury-penthouse-living-room.png" alt="Living room" className="w-full h-full object-cover" />
               </div>
 
-              {/* Bottom right */}
               <div className="bg-primary/10 rounded-3xl overflow-hidden border-4 border-primary/20">
                 <img
                   src="/modern-master-bedroom-suite.jpg"
@@ -64,7 +59,6 @@ export default function WhyChooseUs() {
               </div>
             </div>
 
-            {/* Floating feature labels */}
             <div className="absolute -left-8 top-12 z-10">
               <div className="flex items-center gap-3 bg-card rounded-full px-4 py-2 shadow-lg border-2 border-primary/20">
                 <div className="w-4 h-4 bg-foreground rounded-full"></div>
@@ -101,16 +95,9 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          {/* Right side - Benefits list */}
           <div>
             <div className="mb-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span className="text-sm font-semibold text-muted-foreground tracking-widest uppercase">
-                  {t("whyChooseUs.benefits")}
-                </span>
-              </div>
-              <h2 className="text-5xl md:text-6xl font-bold text-foreground leading-tight mb-6 text-balance">
+              <h2 className="text-5xl font-bold text-foreground leading-tight mb-6 text-balance">
                 {t("whyChooseUs.title")}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
