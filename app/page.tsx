@@ -35,9 +35,9 @@ export default function Home() {
           <div className="absolute inset-0 bg-linear-to-r from-background/80 via-background/70 to-background/40"></div>
         </div>
 
-        <div className="max-w-6xl mx-auto relative z-10 pt-24">
+        <div className="max-w-7xl mx-auto relative z-10 pt-24">
           <div className="mb-16">
-            <h1 className="text-6xl md:text-8xl font-bold text-foreground mb-6 leading-tight text-balance tracking-tight">
+            <h1 className="text-6xl md:text-8xl font-semibold text-foreground mb-6 leading-tight text-balance tracking-tight">
               {t("home.hero.title")}
             </h1>
             <p className="text-lg md:text-xl text-black max-w-2xl leading-relaxed">
@@ -49,9 +49,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col items-center justify-center gap-10 px-6 py-20 md:px-12 mx-auto">
+      <section className="flex flex-col items-center justify-center gap-10 py-20 max-w-7xl mx-auto">
         <div className="mb-12 flex flex-col items-center justify-center">
-          <h2 className="text-4xl font-bold text-foreground mb-3">{t("home.featured.title")}</h2>
+          <h2 className="text-4xl font-semibold text-foreground mb-3">{t("home.featured.title")}</h2>
           <p className="text-lg text-muted-foreground">{t("home.featured.description")}</p>
         </div>
 

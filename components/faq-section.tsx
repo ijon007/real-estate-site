@@ -56,7 +56,7 @@ export default function FAQSection() {
 
           <div className="w-full">
             <div className="mb-8">
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              <h2 className="text-4xl md:text-5xl font-semibold text-foreground mb-4">
                 {t("faq.title")}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
