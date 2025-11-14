@@ -4,7 +4,7 @@ import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 import { useI18n } from "./i18n-provider";
 import { Button } from "./ui/button";
-import { Calendar } from "lucide-react";
+import { Calendar, CalendarDays } from "lucide-react";
 
 function CalAIWidget({ property, className, buttonText }: { property?: boolean; className?: string; buttonText?: string }) {
   const { t } = useI18n();
@@ -27,7 +27,7 @@ function CalAIWidget({ property, className, buttonText }: { property?: boolean; 
       }`}
       data-cal-config='{"layout":"month_view","theme":"light"}'
     >
-      <Calendar className="w-5 h-5" />
+      <CalendarDays className="w-5 h-5" />
       {buttonText || t("common.buttons.scheduleConsultation")}
     </Button>
   );

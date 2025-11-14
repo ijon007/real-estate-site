@@ -162,8 +162,8 @@ export default function PropertyPage() {
     <main className="min-h-screen bg-background flex flex-col">
       <Navigation />
 
-      <div className="px-6 py-8 md:px-12 flex-1 pt-32">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 py-8 md:px-12 flex-1 pt-32 pb-[400px] md:pb-[600px]">
+        <div className="max-w-7xl mx-auto">
           {/* Back Button */}
           <Link
             href="/properties"
@@ -216,21 +216,21 @@ export default function PropertyPage() {
                 <div className="bg-secondary/20 rounded-2xl p-6">
                   <div className="flex items-center gap-3 mb-2">
                     <Bed className="w-6 h-6 text-primary" />
-                    <span className="text-3xl font-bold text-foreground">{property.beds}</span>
+                    <span className="text-3xl font-semibold text-foreground">{property.beds}</span>
                   </div>
                   <p className="text-sm text-muted-foreground">{t("property.bedrooms")}</p>
                 </div>
                 <div className="bg-secondary/20 rounded-2xl p-6">
                   <div className="flex items-center gap-3 mb-2">
                     <Bath className="w-6 h-6 text-primary" />
-                    <span className="text-3xl font-bold text-foreground">{property.baths}</span>
+                    <span className="text-3xl font-semibold text-foreground">{property.baths}</span>
                   </div>
                   <p className="text-sm text-muted-foreground">{t("property.bathrooms")}</p>
                 </div>
                 <div className="bg-secondary/20 rounded-2xl p-6">
                   <div className="flex items-center gap-3 mb-2">
                     <Maximize2 className="w-6 h-6 text-primary" />
-                    <span className="text-3xl font-bold text-foreground">{(property.sqft / 1000).toFixed(1)}k</span>
+                    <span className="text-3xl font-semibold text-foreground">{(property.sqft / 1000).toFixed(1)}k</span>
                   </div>
                   <p className="text-sm text-muted-foreground">{t("property.sqft")}</p>
                 </div>
@@ -238,20 +238,20 @@ export default function PropertyPage() {
 
               {/* Description */}
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">{t("property.about")}</h2>
+                <h2 className="text-2xl font-semibold text-foreground mb-4">{t("property.about")}</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">{property.description}</p>
               </div>
 
               {/* Features */}
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">{t("property.features")}</h2>
+                <h2 className="text-2xl font-semibold text-foreground mb-6">{t("property.features")}</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {property.features.map((feature, idx) => {
                     const IconComponent = getFeatureIcon(feature)
                     return (
                       <div
                         key={idx}
-                        className="group relative flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-secondary/20 to-secondary/5 rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
+                        className="group relative flex flex-col items-center justify-center gap-3 bg-linear-to-br from-secondary/20 to-secondary/5 rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
                       >
                         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                           <IconComponent className="w-6 h-6 text-primary" />
@@ -267,7 +267,7 @@ export default function PropertyPage() {
 
               {/* Location */}
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">{t("property.location")}</h2>
+                <h2 className="text-2xl font-semibold text-foreground mb-6">{t("property.location")}</h2>
                 <div className="rounded-3xl overflow-hidden border border-border bg-muted">
                   <iframe
                     width="100%"
@@ -301,11 +301,11 @@ export default function PropertyPage() {
               <div className="bg-card rounded-3xl p-8 border border-border sticky top-24">
                 {/* Price - Main Element */}
                 <div className="mb-8 pb-8 border-b border-border">
-                  <div className="text-5xl font-bold text-primary mb-2">${(property.price / 1000000).toFixed(2)}M</div>
+                  <div className="text-5xl font-semibold text-primary mb-2">${(property.price / 1000000).toFixed(2)}M</div>
                   <p className="text-sm text-muted-foreground">Asking Price</p>
                 </div>
 
-                <h3 className="text-2xl font-bold text-foreground mb-6">{t("property.getInTouch")}</h3>
+                <h3 className="text-2xl font-semibold text-foreground mb-6">{t("property.getInTouch")}</h3>
 
                 <div className="space-y-6 mb-8">
                   <a

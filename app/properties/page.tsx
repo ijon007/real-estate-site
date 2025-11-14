@@ -58,9 +58,9 @@ export default function PropertiesPage() {
     <main className="min-h-screen bg-background flex flex-col pt-52">
       <Navigation />
 
-      <div className="px-6 py-8 md:px-12 flex-1">
+      <div className="px-6 py-8 md:px-12 flex-1 pb-[400px] md:pb-[600px]">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl font-bold text-foreground mb-2">{t("properties.title")}</h1>
+          <h1 className="text-5xl font-semibold text-foreground mb-2">{t("properties.title")}</h1>
           <p className="text-lg text-muted-foreground mb-12">
             {t("properties.description", { count: filteredProperties.length })}
           </p>
@@ -70,7 +70,7 @@ export default function PropertiesPage() {
             <div className="lg:col-span-1">
               <div className="bg-card rounded-3xl p-6 border border-border sticky top-24">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold text-foreground">{t("properties.filters.title")}</h3>
+                  <h3 className="text-xl font-semibold text-foreground">{t("properties.filters.title")}</h3>
                   <button
                     onClick={resetFilters}
                     className="text-sm text-primary hover:text-primary/80 font-semibold transition-colors cursor-pointer"
