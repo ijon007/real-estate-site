@@ -2,10 +2,9 @@
 
 import Link from "next/link"
 import { FIRM_INFO } from "@/lib/constants"
-import { Button } from "@/components/ui/button"
 import { useI18n } from "./i18n-provider"
 import LanguageSwitcher from "./language-switcher"
-import { Phone } from "lucide-react"
+import CalAIWidget from "./calai"
 
 export default function Navigation() {
   const { t } = useI18n()
@@ -25,12 +24,11 @@ export default function Navigation() {
               {t("common.nav.about")}
             </Link>
             <LanguageSwitcher />
-            <Button variant="default" className="bg-primary text-primary-foreground hover:bg-primary/90 px-5 rounded-full">
-              <Link href="/login" className="flex items-center justify-center gap-2">
-                <Phone className="w-5 h-5" />
-                {t("common.nav.contactUs")}
-              </Link>
-            </Button>
+            <CalAIWidget 
+              className="bg-primary text-white hover:bg-primary/90 px-8 rounded-full w-40" 
+              buttonText={t("about.hero.contactButton")} 
+              iconType="phone"
+            />
           </div>
         </div>
       </div>

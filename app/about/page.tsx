@@ -56,7 +56,11 @@ export default function AboutPage() {
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 {t("about.hero.description")}
               </p>
-              <CalAIWidget className="bg-primary text-white hover:bg-primary/90 py-5 px-8 rounded-full w-40" buttonText={t("about.hero.contactButton")} />
+              <CalAIWidget  
+                className="bg-primary text-white hover:bg-primary/90 py-5 px-8 rounded-full w-40" 
+                buttonText={t("about.hero.contactButton")} 
+                iconType="phone"
+              />
             </div>
             <div className="hidden lg:block"></div>
           </div>

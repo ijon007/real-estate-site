@@ -10,7 +10,6 @@ import HeroSearch from "@/components/hero-search"
 import Footer from "@/components/footer"
 import WhyChooseUs from "@/components/why-choose-us"
 import FAQSection from "@/components/faq-section"
-import CTASection from "@/components/cta-section"
 import ProcessSection from "@/components/process-section"
 import { useI18n } from "@/components/i18n-provider"
 import { Button } from "@/components/ui/button"
@@ -22,20 +21,20 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Navigation />
 
-      <section className="relative px-6 py-20 md:px-12 md:py-32 overflow-hidden">
+      <section className="relative min-h-screen px-6 md:px-12 overflow-hidden flex items-center">
         <div className="absolute inset-0">
           <Image
-            src="/resort-style-pool-estate.jpg"
+            src="/luxury-estate-mansion.jpg"
             alt="Luxury estate with resort-style pool"
             fill
             priority
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-linear-to-r from-background/80 via-background/70 to-background/40"></div>
+          <div className="absolute inset-0 bg-background/60"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 pt-24">
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="mb-16">
             <h1 className="text-6xl md:text-8xl font-semibold text-foreground mb-6 leading-tight text-balance tracking-tight">
               {t("home.hero.title")}
@@ -51,7 +50,7 @@ export default function Home() {
 
       <section className="flex flex-col items-center justify-center gap-10 py-20 max-w-7xl mx-auto">
         <div className="mb-12 flex flex-col items-center justify-center">
-          <h2 className="text-4xl font-semibold text-foreground mb-3">{t("home.featured.title")}</h2>
+          <h2 className="text-5xl font-semibold text-foreground mb-3">{t("home.featured.title")}</h2>
           <p className="text-lg text-muted-foreground">{t("home.featured.description")}</p>
         </div>
 
