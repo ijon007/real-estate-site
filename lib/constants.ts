@@ -1,7 +1,7 @@
 export const FIRM_INFO = {
-  name: "Luxury Realty",
-  address: "1000 Prestige Avenue, Suite 500, New York, NY 10001",
-  phone: "+1 (212) 555-1234",
-  email: "info@luxuryrealty.com",
+  name: "Navills",
+  address: "Kavaja St, Tiranë 1014",
+  phone: "+355685050120",
+  email: "info@navhills.com",
   description: "Specializing in luxury properties and high-end real estate solutions.",
 }

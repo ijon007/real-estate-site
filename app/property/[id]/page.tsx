@@ -301,7 +301,7 @@ export default function PropertyPage() {
               <div className="bg-card rounded-3xl p-8 border border-border sticky top-24">
                 {/* Price - Main Element */}
                 <div className="mb-8 pb-8 border-b border-border">
-                  <div className="text-5xl font-semibold text-primary mb-2">${(property.price / 1000000).toFixed(2)}M</div>
+                  <div className="text-5xl font-semibold text-primary mb-2">{property.price.toLocaleString()} €</div>
                   <p className="text-sm text-muted-foreground">Asking Price</p>
                 </div>
 

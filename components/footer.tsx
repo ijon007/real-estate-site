@@ -5,6 +5,7 @@ import { FIRM_INFO } from "@/lib/constants"
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react"
 import { useI18n } from "./i18n-provider"
 import CTASection from "./cta-section"
+import Image from "next/image"
 
 export default function Footer() {
   const { t } = useI18n()
@@ -19,7 +20,12 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             <div className="md:col-span-1">
-              <h3 className="text-2xl font-bold text-white mb-4">{FIRM_INFO.name}</h3>
+              <div className="flex items-center gap-2">
+                <Image src="/navhills/navhills-no-bg.png" alt="Logo" width={40} height={40} />
+                <span className="text-lg text-white">
+                  Navills Real Estate
+                </span>
+              </div>
               <p className="text-white leading-relaxed mb-6">{FIRM_INFO.description}</p>
               <div className="flex gap-4">
                 <Link
