@@ -27,21 +27,23 @@ function interpolate(template: string, params?: Record<string, string | number>)
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem(STORAGE_KEY) as Language
-      if (stored && supportedLanguages.includes(stored)) {
-        return stored
-      }
+  const [language, setLanguageState] = useState<Language>(defaultLanguage)
+  const [mounted, setMounted] = useState(false)
+
+  // Only read from localStorage after mount to prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true)
+    const stored = localStorage.getItem(STORAGE_KEY) as Language
+    if (stored && supportedLanguages.includes(stored)) {
+      setLanguageState(stored)
     }
-    return defaultLanguage
-  })
+  }, [])
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (mounted && typeof window !== "undefined") {
       localStorage.setItem(STORAGE_KEY, language)
     }
-  }, [language])
+  }, [language, mounted])
 
   const setLanguage = useCallback((lang: Language) => {
     if (supportedLanguages.includes(lang)) {

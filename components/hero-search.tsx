@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Search, CheckIcon, MapPin } from "lucide-react"
+import { Search } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
@@ -13,20 +13,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
-import { cn } from "@/lib/utils"
 import { useI18n } from "./i18n-provider"
 
 const locations = [
@@ -40,28 +26,30 @@ export default function HeroSearch() {
   const { t } = useI18n()
   const [filters, setFilters] = useState({
     type: "all",
-    location: "",
+    location: "all",
     price: "all",
     bedrooms: "all",
   })
-  const [locationOpen, setLocationOpen] = useState(false)
 
   return (
-    <div className="bg-white rounded-3xl p-8 md:p-10 border border-border/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+    <div className="relative rounded-3xl p-6 md:p-8 overflow-hidden">
+      <div className="absolute inset-0 bg-white/40 backdrop-blur-lg" />
+      <div className="absolute inset-0 border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.12)]" />
+      
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         <div>
-          <Label className="mb-3 block text-sm font-semibold text-foreground">
+          <Label className="mb-3 block text-sm font-semibold text-white drop-shadow-sm">
             {t("search.propertyType")}
           </Label>
           <Select
             value={filters.type}
             onValueChange={(value: string) => setFilters({ ...filters, type: value })}
           >
-            <SelectTrigger className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground font-medium focus:ring-1 focus:ring-primary focus:ring-offset-0 w-full">
+            <SelectTrigger className="rounded-2xl border-white/50 bg-white/50 backdrop-blur-sm px-4 py-3 text-foreground font-medium focus:ring-2 focus:ring-white/70 focus:ring-offset-0 w-full hover:bg-white/60 transition-all">
               <SelectValue placeholder={t("search.selectPropertyType")} />
             </SelectTrigger>
-            <SelectContent className="rounded-2xl border-border">
-              <SelectItem value="all">{t("search.allTypes")}</SelectItem>
+            <SelectContent className="rounded-2xl border-white/50 bg-white/60 backdrop-blur-lg shadow-xl">
+              <SelectItem value="all" >{t("search.allTypes")}</SelectItem>
               <SelectItem value="apartment">{t("search.apartment")}</SelectItem>
               <SelectItem value="house">{t("search.house")}</SelectItem>
               <SelectItem value="penthouse">{t("search.penthouse")}</SelectItem>
@@ -71,69 +59,39 @@ export default function HeroSearch() {
         </div>
 
         <div>
-          <Label className="mb-3 block text-sm font-semibold text-foreground">
+          <Label className="mb-3 block text-sm font-semibold text-white drop-shadow-sm">
             {t("search.location")}
           </Label>
-          <Popover open={locationOpen} onOpenChange={setLocationOpen}>
-            <PopoverTrigger asChild>
-              <Button
-                variant="outline"
-                role="combobox"
-                aria-expanded={locationOpen}
-                className="w-full justify-between rounded-2xl border-border bg-muted px-4 py-3 text-foreground font-medium hover:bg-muted focus:ring-1 focus:ring-primary focus:ring-offset-0"
-              >
-                {filters.location
-                  ? locations.find((loc) => loc.value === filters.location)?.label
-                  : t("search.enterLocation")}
-                <MapPin className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-(--radix-popover-trigger-width) p-0 rounded-2xl border-border">
-              <Command>
-                <CommandInput placeholder={t("search.enterLocation")} />
-                <CommandList>
-                  <CommandEmpty>No location found.</CommandEmpty>
-                  <CommandGroup>
-                    {locations.map((location) => (
-                      <CommandItem
-                        key={location.value}
-                        value={location.value}
-                        onSelect={(currentValue) => {
-                          setFilters({
-                            ...filters,
-                            location: currentValue === filters.location ? "" : currentValue,
-                          })
-                          setLocationOpen(false)
-                        }}
-                      >
-                        <CheckIcon
-                          className={cn(
-                            "mr-2 h-4 w-4",
-                            filters.location === location.value ? "opacity-100" : "opacity-0"
-                          )}
-                        />
-                        {location.label}
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
+          <Select
+            value={filters.location}
+            onValueChange={(value: string) => setFilters({ ...filters, location: value })}
+          >
+            <SelectTrigger className="rounded-2xl border-white/50 bg-white/50 backdrop-blur-sm px-4 py-3 text-foreground font-medium focus:ring-2 focus:ring-white/70 focus:ring-offset-0 w-full hover:bg-white/60 transition-all">
+              <SelectValue placeholder={t("search.enterLocation")} />
+            </SelectTrigger>
+            <SelectContent className="rounded-2xl border-white/50 bg-white/60 backdrop-blur-lg shadow-xl">
+              <SelectItem value="all">{t("search.enterLocation")}</SelectItem>
+              {locations.map((location) => (
+                <SelectItem key={location.value} value={location.value}>
+                  {location.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         <div>
-          <Label className="mb-3 block text-sm font-semibold text-foreground">
+          <Label className="mb-3 block text-sm font-semibold text-white drop-shadow-sm">
             {t("search.priceRange")}
           </Label>
           <Select
             value={filters.price}
             onValueChange={(value: string) => setFilters({ ...filters, price: value })}
           >
-            <SelectTrigger className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground font-medium focus:ring-1 focus:ring-primary focus:ring-offset-0 w-full">
+            <SelectTrigger className="rounded-2xl border-white/50 bg-white/50 backdrop-blur-sm px-4 py-3 text-foreground font-medium focus:ring-2 focus:ring-white/70 focus:ring-offset-0 w-full hover:bg-white/60 transition-all">
               <SelectValue placeholder={t("search.selectPriceRange")} />
             </SelectTrigger>
-            <SelectContent className="rounded-2xl border-border">
+            <SelectContent className="rounded-2xl border-white/50 bg-white/60 backdrop-blur-lg shadow-xl">
               <SelectItem value="all">{t("search.anyPrice")}</SelectItem>
               <SelectItem value="500k">{t("search.under500k")}</SelectItem>
               <SelectItem value="500k-1m">{t("search.price500k1m")}</SelectItem>
@@ -144,7 +102,7 @@ export default function HeroSearch() {
         </div>
 
         <div>
-          <Label className="mb-3 block text-sm font-semibold text-foreground">
+          <Label className="mb-3 block text-sm font-semibold text-white drop-shadow-sm">
             {t("search.bedrooms")}
           </Label>
           <Select
@@ -153,10 +111,10 @@ export default function HeroSearch() {
               setFilters({ ...filters, bedrooms: value })
             }
           >
-            <SelectTrigger className="rounded-2xl border-border bg-muted px-4 py-3 text-foreground font-medium focus:ring-1 focus:ring-primary focus:ring-offset-0 w-full">
+            <SelectTrigger className="rounded-2xl border-white/50 bg-white/50 backdrop-blur-sm px-4 py-3 text-foreground font-medium focus:ring-2 focus:ring-white/70 focus:ring-offset-0 w-full hover:bg-white/60 transition-all">
               <SelectValue placeholder={t("search.selectBedrooms")} />
             </SelectTrigger>
-            <SelectContent className="rounded-2xl border-border">
+            <SelectContent className="rounded-2xl border-white/50 bg-white/60 backdrop-blur-lg shadow-xl">
               <SelectItem value="all">{t("search.anySize")}</SelectItem>
               <SelectItem value="1">{t("search.bedroom1")}</SelectItem>
               <SelectItem value="2">{t("search.bedroom2")}</SelectItem>
@@ -169,7 +127,7 @@ export default function HeroSearch() {
         <div className="flex items-end">
           <Button
             asChild
-            className="flex items-center justify-start w-full rounded-2xl py-3 hover:bg-primary/90"
+            className="flex items-center justify-start w-full rounded-3xl py-3 bg-foreground hover:bg-foreground/95 transition-all shadow-lg hover:shadow-xl"
           >
             <Link href="/properties" className="flex items-center justify-center gap-2">
               <Search className="h-5 w-5" />

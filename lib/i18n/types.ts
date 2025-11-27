@@ -100,6 +100,8 @@ export interface Translations {
     bedrooms: string
     bathrooms: string
     sqft: string
+    location: string
+    getDirections: string
   }
   contact: {
     title: string
@@ -178,6 +180,28 @@ export interface Translations {
   about: {
     title: string
     subtitle: string
+    hero: {
+      title: string
+      description: string
+      contactButton: string
+    }
+    stats: {
+      propertiesSold: {
+        value: string
+        label: string
+        description: string
+      }
+      happyClients: {
+        value: string
+        label: string
+        description: string
+      }
+      yearsExperience: {
+        value: string
+        label: string
+        description: string
+      }
+    }
     company: {
       title: string
       description: string

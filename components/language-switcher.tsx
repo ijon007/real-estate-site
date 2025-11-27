@@ -33,7 +33,7 @@ export default function LanguageSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="flex items-center gap-2 border-border bg-transparent text-black hover:bg-transparent hover:text-black"
+          className="flex items-center gap-2 border-border/50 bg-transparent text-black hover:bg-transparent hover:text-black"
           size="sm"
           variant="outline"
         >
