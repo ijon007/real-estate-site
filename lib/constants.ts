@@ -1,7 +1,7 @@
 export const FIRM_INFO = {
-  name: "Luxury Realty",
-  address: "1000 Prestige Avenue, Suite 500, New York, NY 10001",
-  phone: "+1 (212) 555-1234",
-  email: "info@luxuryrealty.com",
-  description: "Specializing in luxury properties and high-end real estate solutions.",
+  name: "Jep Marr Shtepi me Qera",
+  address: "Kavaja St, Tiranë, Albania",
+  phone: "+355 69 24 21 665",
+  email: "donaldhusi@outlook.com",
+  description: "Jap dhe marr shtepi, ambjente, zyra me qera në Tiranë.",
 }

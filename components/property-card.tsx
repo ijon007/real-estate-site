@@ -4,6 +4,7 @@ import Link from "next/link"
 import type { Property } from "@/lib/mock-data"
 import { Bed, Bath, Maximize2 } from "lucide-react"
 import { useI18n } from "./i18n-provider"
+import Image from "next/image"
 
 interface PropertyCardProps {
   property: Property
@@ -16,13 +17,15 @@ export default function PropertyCard({ property }: PropertyCardProps) {
     <Link href={`/property/${property.id}`}>
       <div className="bg-card rounded-3xl overflow-hidden border border-border hover:border-primary/50 transition-all hover:shadow-lg cursor-pointer group">
         <div className="relative h-64 overflow-hidden bg-muted">
-          <img
-            src={property.image || "/placeholder.svg"}
+          <Image
+            src={property.image}
             alt={property.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            width={500}
+            height={500}
           />
           <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold">
-            ${(property.price / 1000000).toFixed(1)}M
+            {property.price} €
           </div>
         </div>
 

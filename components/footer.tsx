@@ -2,9 +2,10 @@
 
 import Link from "next/link"
 import { FIRM_INFO } from "@/lib/constants"
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react"
+import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react"
 import { useI18n } from "./i18n-provider"
 import CTASection from "./cta-section"
+import Image from "next/image"
 
 export default function Footer() {
   const { t } = useI18n()
@@ -19,26 +20,21 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             <div className="md:col-span-1">
+              <Image src="/jep-marr/jap-marr-logo.png" alt="Jep Marr Logo" width={50} height={20} />
               <h3 className="text-2xl font-bold text-white mb-4">{FIRM_INFO.name}</h3>
               <p className="text-white leading-relaxed mb-6">{FIRM_INFO.description}</p>
               <div className="flex gap-4">
                 <Link
-                  href="#"
+                  href="https://www.facebook.com/apartamente.shtepi.me.qera/?utm_source=ig&utm_medium=social&utm_content=link_in_bio"
                   className="group w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer"
                 >
                   <Facebook className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
                 </Link>
                 <Link
-                  href="#"
+                  href="https://www.instagram.com/japmarrshtepimeqera"
                   className="group w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer"
                 >
                   <Instagram className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
-                </Link>
-                <Link
-                  href="#"
-                  className="group w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer"
-                >
-                  <Linkedin className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
                 </Link>
               </div>
             </div>
@@ -52,8 +48,8 @@ export default function Footer() {
                 <Link href="/properties" className="block text-white/60 hover:text-white transition-colors">
                   {t("common.footer.properties")}
                 </Link>
-                <Link href="/contact" className="block text-white/60 hover:text-white transition-colors">
-                  {t("common.footer.contact")}
+                <Link href="/about" className="block text-white/60 hover:text-white transition-colors">
+                  {t("common.footer.about")}
                 </Link>
               </div>
             </div>

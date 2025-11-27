@@ -66,7 +66,6 @@ export default function PropertiesPage() {
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Filter Sidebar */}
             <div className="lg:col-span-1">
               <div className="bg-card rounded-3xl p-6 border border-border sticky top-24">
                 <div className="flex items-center justify-between mb-6">
@@ -79,7 +78,6 @@ export default function PropertiesPage() {
                   </button>
                 </div>
 
-                {/* Price Filter */}
                 <div className="mb-8">
                   <label className="block text-sm font-semibold text-foreground mb-3">{t("properties.filters.priceRange")}</label>
                   <div className="space-y-3">
@@ -98,7 +96,6 @@ export default function PropertiesPage() {
                   </div>
                 </div>
 
-                {/* Bedrooms Filter */}
                 <div className="mb-8">
                   <label className="block text-sm font-semibold text-foreground mb-3">{t("properties.filters.bedrooms")}</label>
                   <div className="grid grid-cols-3 gap-2">
@@ -118,7 +115,6 @@ export default function PropertiesPage() {
                   </div>
                 </div>
 
-                {/* Bathrooms Filter */}
                 <div className="mb-8">
                   <label className="block text-sm font-semibold text-foreground mb-3">{t("properties.filters.bathrooms")}</label>
                   <div className="grid grid-cols-3 gap-2">
@@ -140,7 +136,6 @@ export default function PropertiesPage() {
               </div>
             </div>
 
-            {/* Properties Grid */}
             <div className="lg:col-span-3">
               <div className="flex items-center justify-between mb-5">
                 <p className="text-muted-foreground font-medium">{t("properties.results.found", { count: filteredProperties.length })}</p>
