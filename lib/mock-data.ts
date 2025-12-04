@@ -16,7 +16,7 @@ export const mockProperties: Property[] = [
   {
     id: "1",
     title: "Modern Waterfront Penthouse",
-    price: 2500000,
+    price: 25000,
     location: "123 Ocean Drive, Miami Beach, FL",
     beds: 4,
     baths: 3,
@@ -35,7 +35,7 @@ export const mockProperties: Property[] = [
   {
     id: "2",
     title: "Contemporary Downtown Loft",
-    price: 1200000,
+    price: 12000,
     location: "456 Urban Avenue, New York, NY",
     beds: 3,
     baths: 2,
@@ -54,7 +54,7 @@ export const mockProperties: Property[] = [
   {
     id: "3",
     title: "Luxury Suburban Estate",
-    price: 1800000,
+    price: 180000,
     location: "789 Meadowbrook Lane, Westchester, NY",
     beds: 5,
     baths: 4,
@@ -73,7 +73,7 @@ export const mockProperties: Property[] = [
   {
     id: "4",
     title: "Cozy Beach Cottage",
-    price: 850000,
+    price: 85000,
     location: "321 Seaside Road, Santa Monica, CA",
     beds: 2,
     baths: 2,
@@ -92,7 +92,7 @@ export const mockProperties: Property[] = [
   {
     id: "5",
     title: "Modern Tech Hub Office",
-    price: 950000,
+    price: 95000,
     location: "555 Innovation Drive, San Francisco, CA",
     beds: 3,
     baths: 2,
@@ -111,7 +111,7 @@ export const mockProperties: Property[] = [
   {
     id: "6",
     title: "Historic Victorian Charm",
-    price: 1100000,
+    price: 110000,
     location: "234 Heritage Street, Boston, MA",
     beds: 4,
     baths: 3,

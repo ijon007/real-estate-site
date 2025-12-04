@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { FIRM_INFO } from "@/lib/constants"
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react"
+import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react"
 import { useI18n } from "./i18n-provider"
 import CTASection from "./cta-section"
 
@@ -34,12 +34,12 @@ export default function Footer() {
                 >
                   <Instagram className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
                 </Link>
-                <Link
+                {/* <Link
                   href="#"
                   className="group w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer"
                 >
                   <Linkedin className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
-                </Link>
+                </Link> */}
               </div>
             </div>
 
@@ -52,8 +52,8 @@ export default function Footer() {
                 <Link href="/properties" className="block text-white/60 hover:text-white transition-colors">
                   {t("common.footer.properties")}
                 </Link>
-                <Link href="/contact" className="block text-white/60 hover:text-white transition-colors">
-                  {t("common.footer.contact")}
+                <Link href="/about" className="block text-white/60 hover:text-white transition-colors">
+                  {t("common.footer.about")}
                 </Link>
               </div>
             </div>
