@@ -10,8 +10,8 @@ import { I18nProvider } from "@/components/i18n-provider"
 const _poppins = Poppins({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
 
 export const metadata: Metadata = {
-  title: "Luxury Realty - Premium Real Estate",
-  description: "Discover luxury properties and find your dream home with Luxury Realty.",
+  title: "Infinity Real Estate - Premium Real Estate",
+  description: "Discover properties and find your dream home with Infinity Real Estate.",
 }
 
 export default function RootLayout({

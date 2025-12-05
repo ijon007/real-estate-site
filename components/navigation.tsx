@@ -8,6 +8,7 @@ import { useState } from "react"
 import { Home, Menu, X } from "lucide-react"
 import { Button } from "./ui/button"
 import { FIRM_INFO } from "@/lib/constants"
+import Image from "next/image"
 
 export default function Navigation() {
   const { t } = useI18n()
@@ -21,7 +22,8 @@ export default function Navigation() {
         
         <div className="relative z-10 flex items-center justify-between px-3 sm:px-6 py-3 sm:py-4">
           <Link href="/" className="flex flex-row items-center justify-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-            <Home className="size-6 text-foreground" />
+            {/* <Home className="size-6 text-foreground" /> */}
+            <Image src="/infinity/irg-logo-nobg.png" alt="Infinity Real Estate" width={40} height={40} />
             <span className="hidden md:flex text-lg text-foreground font-semibold">{FIRM_INFO.name}</span>
           </Link>
           
@@ -35,7 +37,7 @@ export default function Navigation() {
             </Link>
             <LanguageSwitcher />
             <CalAIWidget 
-              className="bg-foreground text-background hover:bg-foreground/95 px-6 lg:px-8 rounded-full transition-all whitespace-nowrap" 
+              className="bg-primary text-background hover:bg-primary/95 px-6 lg:px-8 rounded-full transition-all whitespace-nowrap" 
               buttonText={t("about.hero.contactButton")} 
               iconType="phone"
             />
@@ -103,7 +105,7 @@ export default function Navigation() {
                 : '-translate-x-4 opacity-0'
             }`}>
               <CalAIWidget 
-                className="bg-foreground text-background hover:bg-foreground/95 px-6 rounded-full transition-all w-full justify-center" 
+                className="bg-primary text-background hover:bg-foreground/95 px-6 rounded-full transition-all w-full justify-center" 
                 buttonText={t("about.hero.contactButton")} 
                 iconType="phone"
               />
