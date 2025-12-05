@@ -91,7 +91,7 @@ export default function PropertiesPage() {
                       className="w-full h-2 bg-border rounded-lg appearance-none cursor-pointer"
                     />
                     <div className="text-sm text-muted-foreground">
-                      {priceRange[1]} - {1000} €
+                    €0 - €{priceRange[1]}
                     </div>
                   </div>
                 </div>
