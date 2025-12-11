@@ -230,9 +230,12 @@ export default function PropertyPage() {
                 <div className="bg-secondary/20 rounded-2xl p-6">
                   <div className="flex items-center gap-3 mb-2">
                     <Maximize2 className="w-6 h-6 text-primary" />
-                    <span className="text-3xl font-semibold text-foreground">{(property.sqft / 1000).toFixed(1)}k</span>
+                    <span className="text-3xl font-semibold">
+                      <span className="text-foreground">{property.sqm}</span>
+                      <span className="text-primary"> m²</span>
+                    </span>
                   </div>
-                  <p className="text-sm text-muted-foreground">{t("property.sqft")}</p>
+                  <p className="text-sm text-muted-foreground">{t("property.sqm")}</p>
                 </div>
               </div>
 
@@ -301,7 +304,7 @@ export default function PropertyPage() {
               <div className="bg-card rounded-3xl p-8 border border-border sticky top-24">
                 {/* Price - Main Element */}
                 <div className="mb-8 pb-8 border-b border-border">
-                  <div className="text-5xl font-semibold text-primary mb-2">${(property.price / 1000000).toFixed(2)}M</div>
+                  <div className="text-5xl font-semibold text-primary mb-2">{property.price.toLocaleString()} €</div>
                   <p className="text-sm text-muted-foreground">Asking Price</p>
                 </div>
 

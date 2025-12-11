@@ -16,7 +16,7 @@ import {
 
 export default function PropertiesPage() {
   const { t } = useI18n()
-  const [priceRange, setPriceRange] = useState([0, 3000000])
+  const [priceRange, setPriceRange] = useState([0, 200000])
   const [beds, setBeds] = useState<number | null>(null)
   const [baths, setBaths] = useState<number | null>(null)
   const [sortBy, setSortBy] = useState("featured")
@@ -48,7 +48,7 @@ export default function PropertiesPage() {
   }, [priceRange, beds, baths, sortBy])
 
   const resetFilters = () => {
-    setPriceRange([0, 3000000])
+    setPriceRange([0, 200000])
     setBeds(null)
     setBaths(null)
     setSortBy("featured")
@@ -86,14 +86,14 @@ export default function PropertiesPage() {
                     <input
                       type="range"
                       min="0"
-                      max="3000000"
-                      step="100000"
+                      max="200000"
+                      step="10000"
                       value={priceRange[1]}
                       onChange={(e) => setPriceRange([priceRange[0], Number.parseInt(e.target.value)])}
-                      className="w-full h-2 bg-border rounded-lg appearance-none cursor-pointer"
+                      className="w-full h-2 bg-primary/50 rounded-lg appearance-none cursor-pointer accent-primary"
                     />
                     <div className="text-sm text-muted-foreground">
-                      ${(priceRange[1] / 1000000).toFixed(1)}M - ${(3000000 / 1000000).toFixed(1)}M
+                      0 - {priceRange[1].toLocaleString()} €
                     </div>
                   </div>
                 </div>

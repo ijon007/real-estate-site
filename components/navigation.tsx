@@ -5,6 +5,7 @@ import { FIRM_INFO } from "@/lib/constants"
 import { useI18n } from "./i18n-provider"
 import LanguageSwitcher from "./language-switcher"
 import CalAIWidget from "./calai"
+import Image from "next/image"
 
 export default function Navigation() {
   const { t } = useI18n()
@@ -16,9 +17,17 @@ export default function Navigation() {
         <div className="absolute inset-0 border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.12)]" />
         
         <div className="relative z-10 flex items-center justify-between px-6 py-4 md:px-12">
-          <Link href="/" className="text-2xl font-bold text-foreground">
-            {FIRM_INFO.name}
-          </Link>
+          <div className="flex items-center gap-2">
+            <Image 
+              src="/kati-kati/kati-kati.png"
+              alt="Logo"
+              width={40}
+              height={100}
+            />
+            <Link href="/" className="text-2xl font-bold text-foreground">
+              {FIRM_INFO.name}
+            </Link>
+          </div>
           <div className="flex items-center gap-5">
             <Link href="/properties" className="text-foreground hover:text-primary transition-colors font-medium">
               {t("common.nav.properties")}
@@ -28,7 +37,7 @@ export default function Navigation() {
             </Link>
             <LanguageSwitcher />
             <CalAIWidget 
-              className="bg-foreground text-background hover:bg-foreground/95 px-8 rounded-full w-40 transition-all" 
+              className="bg-primary text-background hover:bg-primary/95 px-8 rounded-full w-40 transition-all" 
               buttonText={t("about.hero.contactButton")} 
               iconType="phone"
             />

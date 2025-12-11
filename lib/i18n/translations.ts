@@ -103,7 +103,7 @@ export const translations: Record<Language, Translations> = {
       emailUs: "Email Us",
       bedrooms: "Bedrooms",
       bathrooms: "Bathrooms",
-      sqft: "Sq. Ft.",
+      sqm: "Square Meters",
       location: "Location",
       getDirections: "Get Directions",
     },
@@ -155,7 +155,7 @@ export const translations: Record<Language, Translations> = {
     propertyCard: {
       beds: "Beds",
       baths: "Baths",
-      sqft: "sqft",
+      sqm: "m²",
     },
     whyChooseUs: {
       benefits: "Our Benefits",
@@ -360,7 +360,7 @@ export const translations: Record<Language, Translations> = {
       emailUs: "Na Dërgoni Email",
       bedrooms: "Dhoma Gjumi",
       bathrooms: "Banjo",
-      sqft: "Metra Katrorë",
+      sqm: "Metra Katrorë",
       location: "Vendndodhja",
       getDirections: "Merr Udhëzime",
     },
@@ -412,7 +412,7 @@ export const translations: Record<Language, Translations> = {
     propertyCard: {
       beds: "Dhoma",
       baths: "Banjo",
-      sqft: "m²",
+      sqm: "m²",
     },
     whyChooseUs: {
       benefits: "Përfitimet Tona",

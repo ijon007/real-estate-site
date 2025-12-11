@@ -99,7 +99,7 @@ export interface Translations {
     emailUs: string
     bedrooms: string
     bathrooms: string
-    sqft: string
+    sqm: string
     location: string
     getDirections: string
   }
@@ -151,7 +151,7 @@ export interface Translations {
   propertyCard: {
     beds: string
     baths: string
-    sqft: string
+    sqm: string
   }
   whyChooseUs: {
     benefits: string
