@@ -1,7 +1,7 @@
 export const FIRM_INFO = {
-  name: "Luxury Realty",
-  address: "1000 Prestige Avenue, Suite 500, New York, NY 10001",
-  phone: "+1 (212) 555-1234",
-  email: "info@luxuryrealty.com",
+  name: "Selman Lila Real Estate",
+  address: "Tiranë, Albania",
+  phone: "+355 68 54 51 010",
+  email: "info@selmanlila.com",
   description: "Specializing in luxury properties and high-end real estate solutions.",
 }

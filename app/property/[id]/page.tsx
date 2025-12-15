@@ -230,7 +230,7 @@ export default function PropertyPage() {
                 <div className="bg-white rounded-2xl p-6 border border-border">
                   <div className="flex items-center gap-3 mb-2">
                     <Maximize2 className="w-6 h-6 text-primary" />
-                    <span className="text-3xl font-semibold text-foreground">{(property.sqft / 1000).toFixed(1)}k</span>
+                    <span className="text-3xl font-semibold text-foreground">{property.sqft.toLocaleString()}</span>
                   </div>
                   <p className="text-sm text-muted-foreground">{t("property.sqft")}</p>
                 </div>

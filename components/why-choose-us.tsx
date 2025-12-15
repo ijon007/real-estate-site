@@ -127,7 +127,7 @@ export default function WhyChooseUs() {
             </div>
 
             <BlurFade delay={0.6} inView direction="up">
-              <Button className="px-10 py-6 bg-foreground text-background rounded-full hover:bg-foreground/90 transition-colors">
+              <Button className="px-10 py-6 bg-primary text-background rounded-full hover:bg-primary/90 transition-colors">
                 {t("common.buttons.moreAboutUs")}
               </Button>
             </BlurFade>

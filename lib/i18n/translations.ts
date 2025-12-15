@@ -104,7 +104,7 @@ export const translations: Record<Language, Translations> = {
       emailUs: "Email Us",
       bedrooms: "Bedrooms",
       bathrooms: "Bathrooms",
-      sqft: "Sq. Ft.",
+      sqft: "Sq. M.",
       location: "Location",
       getDirections: "Get Directions",
     },
@@ -156,7 +156,7 @@ export const translations: Record<Language, Translations> = {
     propertyCard: {
       beds: "Beds",
       baths: "Baths",
-      sqft: "sqft",
+      sqft: "m²",
     },
     whyChooseUs: {
       benefits: "Our Benefits",
