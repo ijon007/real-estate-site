@@ -136,10 +136,10 @@ export interface Translations {
     priceRange: string
     selectPriceRange: string
     anyPrice: string
-    under500k: string
-    price500k1m: string
-    price1m2m: string
-    price2mPlus: string
+    under15k: string
+    price15k25k: string
+    price25k35k: string
+    price35kPlus: string
     bedrooms: string
     selectBedrooms: string
     anySize: string

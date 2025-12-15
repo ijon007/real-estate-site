@@ -213,21 +213,21 @@ export default function PropertyPage() {
 
               {/* Key Stats */}
               <div className="grid grid-cols-3 gap-4 pb-8 border-b border-border">
-                <div className="bg-secondary/20 rounded-2xl p-6">
+                <div className="bg-white rounded-2xl p-6 border border-border">
                   <div className="flex items-center gap-3 mb-2">
                     <Bed className="w-6 h-6 text-primary" />
                     <span className="text-3xl font-semibold text-foreground">{property.beds}</span>
                   </div>
                   <p className="text-sm text-muted-foreground">{t("property.bedrooms")}</p>
                 </div>
-                <div className="bg-secondary/20 rounded-2xl p-6">
+                <div className="bg-white rounded-2xl p-6 border border-border">
                   <div className="flex items-center gap-3 mb-2">
                     <Bath className="w-6 h-6 text-primary" />
                     <span className="text-3xl font-semibold text-foreground">{property.baths}</span>
                   </div>
                   <p className="text-sm text-muted-foreground">{t("property.bathrooms")}</p>
                 </div>
-                <div className="bg-secondary/20 rounded-2xl p-6">
+                <div className="bg-white rounded-2xl p-6 border border-border">
                   <div className="flex items-center gap-3 mb-2">
                     <Maximize2 className="w-6 h-6 text-primary" />
                     <span className="text-3xl font-semibold text-foreground">{(property.sqft / 1000).toFixed(1)}k</span>
@@ -251,7 +251,7 @@ export default function PropertyPage() {
                     return (
                       <div
                         key={idx}
-                        className="group relative flex flex-col items-center justify-center gap-3 bg-linear-to-br from-secondary/20 to-secondary/5 rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
+                        className="group relative flex flex-col items-center justify-center gap-3 bg-white rounded-2xl p-6 border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
                       >
                         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                           <IconComponent className="w-6 h-6 text-primary" />
@@ -301,7 +301,7 @@ export default function PropertyPage() {
               <div className="bg-card rounded-3xl p-8 border border-border sticky top-24">
                 {/* Price - Main Element */}
                 <div className="mb-8 pb-8 border-b border-border">
-                  <div className="text-5xl font-semibold text-primary mb-2">${(property.price / 1000000).toFixed(2)}M</div>
+                  <div className="text-5xl font-semibold text-primary mb-2">€{property.price.toLocaleString()}</div>
                   <p className="text-sm text-muted-foreground">Asking Price</p>
                 </div>
 

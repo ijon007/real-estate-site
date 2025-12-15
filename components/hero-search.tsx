@@ -93,10 +93,10 @@ export default function HeroSearch() {
             </SelectTrigger>
             <SelectContent className="rounded-2xl border-white/50 bg-white/60 backdrop-blur-lg shadow-xl">
               <SelectItem value="all">{t("search.anyPrice")}</SelectItem>
-              <SelectItem value="500k">{t("search.under500k")}</SelectItem>
-              <SelectItem value="500k-1m">{t("search.price500k1m")}</SelectItem>
-              <SelectItem value="1m-2m">{t("search.price1m2m")}</SelectItem>
-              <SelectItem value="2m">{t("search.price2mPlus")}</SelectItem>
+              <SelectItem value="10k">{t("search.under15k")}</SelectItem>
+              <SelectItem value="15k-25k">{t("search.price15k25k")}</SelectItem>
+              <SelectItem value="25k-35k">{t("search.price25k35k")}</SelectItem>
+              <SelectItem value="35k">{t("search.price35kPlus")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -127,7 +127,7 @@ export default function HeroSearch() {
         <div className="flex items-end">
           <Button
             asChild
-            className="flex items-center justify-start w-full rounded-3xl py-3 bg-foreground hover:bg-foreground/95 transition-all shadow-lg hover:shadow-xl"
+            className="flex items-center justify-start w-full rounded-3xl py-3 bg-primary text-primary-foreground hover:bg-primary/95 transition-all shadow-lg hover:shadow-xl"
           >
             <Link href="/properties" className="flex items-center justify-center gap-2">
               <Search className="h-5 w-5" />
